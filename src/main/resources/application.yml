@@ -1,0 +1,9 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-alias: spring
+    key-store: "src/main/resources/keystore.p12"
+    key-store-type: PKCS12
+    key-store-password: katsou123
+    key-password: katsou123
