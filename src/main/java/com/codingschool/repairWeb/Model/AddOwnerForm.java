@@ -1,6 +1,6 @@
 package com.codingschool.repairWeb.Model;
 
-public class AddForm {
+public class AddOwnerForm {
     private String name;
     private String mail;
     private String afm;

@@ -5,7 +5,8 @@
 <h2> Search For Books by title</h2>
 
 
-<form name="addForm" action="/add" method="post">
+<form name="addOwnerForm" action="/add" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <label> Name:</label><input type="text" name="name" placeholder="Name"/>
     <label> Surname:</label><input type="text" name="surname" placeholder="Surname"/>
     <label> Mail:</label><input type="text" name="mail" placeholder="Mail"/>
