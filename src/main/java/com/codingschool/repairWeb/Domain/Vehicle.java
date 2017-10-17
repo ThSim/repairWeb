@@ -19,8 +19,11 @@ public class Vehicle {
     private String brand;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class)
+    private List<Repair> repair= new ArrayList<>();
 
 
     public Vehicle(String plate, String brand, User user) {

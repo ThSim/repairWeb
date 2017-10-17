@@ -11,16 +11,66 @@ public class Repair implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    /*@Temporal(TemporalType.DATE)
-    private java.util.Date myDate;*/
-
-    @Column
-    private LocalDateTime dateTime;
-
-    @Column(nullable = false, unique = true)
-    private String mail;
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
+    private Vehicle vehicle;
 
     @Column(nullable = false)
-    private String pass;
+    private LocalDateTime dateTime;
 
+    @Column(nullable = false)
+    private String status;
+
+    @Column
+    private double price;
+
+    public Repair() {
+    }
+
+    public Repair(Vehicle vehicle, LocalDateTime dateTime, String status, double price) {
+        this.vehicle = vehicle;
+        this.dateTime = dateTime;
+        this.status = status;
+        this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
