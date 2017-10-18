@@ -1,4 +1,4 @@
-package com.codingschool.repairWeb.Controllers;
+package com.codingschool.repairWeb.Controllers.OwnerControllers;
 
 import org.springframework.stereotype.Controller;
 
