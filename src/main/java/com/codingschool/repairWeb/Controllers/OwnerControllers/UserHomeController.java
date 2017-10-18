@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserHomeController {
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/user", method = RequestMethod.GET)
     public String admin(Model model) {
 
         addUsernameInModel(model);
@@ -28,5 +28,5 @@ public class UserHomeController {
             model.addAttribute("errorMessage", "User not logged in anymore!");
         }
 
-    }
+    }*/
 }

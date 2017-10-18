@@ -1,5 +1,8 @@
 package com.codingschool.repairWeb.Domain;
 
+import org.hibernate.Session;
+import org.springframework.context.annotation.Scope;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;

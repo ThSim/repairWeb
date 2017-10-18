@@ -41,6 +41,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider{
 
             Authentication auth = new UsernamePasswordAuthenticationToken(username, pass, grantedAuths);
             String fullName =user.getName()+" "+user.getSurname();
+
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             attr.getRequest().getSession().setAttribute("fullName",fullName);
         return auth;
