@@ -26,13 +26,13 @@ public class AddOwnerController {
     private VehicleService vehicleService;
 
     //Sample search page to demonstrate functionality. Ignore for now.
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
     public String getAddView(Model model) {
         model.addAttribute(ADD_FORM, new AddOwnerForm());
         return "add";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public String doAdd(@ModelAttribute(ADD_FORM) AddOwnerForm addOwnerForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
@@ -43,7 +43,7 @@ public class AddOwnerController {
         userService.save(userToAdd);
         vehicleService.save(veh);
 
-        return "redirect:/add";
+        return "redirect:/admin/add";
     }
 
 }

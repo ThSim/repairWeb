@@ -14,9 +14,9 @@
 <table>
     <#list repairList as repair>
         <tr>
-            <td> Datetime: ${repair.dateTime}</td>
-            <td> Status: ${repair.status}</td>
-            <td> Type: ${repair.price}</td>
+            <td> Datetime: ${repair.dateTime}  </td>
+            <td> Status: ${repair.status}  </td>
+            <td> Type: ${repair.price}  </td>
         </tr>
 
     </#list>

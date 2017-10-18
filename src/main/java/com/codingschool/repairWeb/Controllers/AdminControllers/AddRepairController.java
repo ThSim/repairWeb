@@ -27,13 +27,13 @@ public class AddRepairController {
     @Autowired
     private RepairService repairService;
 
-    @RequestMapping(value = "/addrepair", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addrepair", method = RequestMethod.GET)
     public String getAddView(Model model) {
         model.addAttribute(ADD_FORM, new AddRepairForm());
         return "addrepair";
     }
 
-    @RequestMapping(value = "/addrepair", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/addrepair", method = RequestMethod.POST)
     public String doAdd(@ModelAttribute(ADD_FORM) AddRepairForm addRepairForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
@@ -50,7 +50,7 @@ public class AddRepairController {
         vehicleService.save(veh);
         repairService.save(rep);
 
-        return "redirect:/addrepair";
+        return "redirect:/admin/addrepair";
     }
 
 }

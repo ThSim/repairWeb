@@ -19,6 +19,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthHandler authHandler;
 
+    @Autowired
+    private LoginFailureHandler loginFailureHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -30,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.and().csrf().disable()
                 .and()
                 .formLogin().successHandler(authHandler)
-                //.failureHandler(failHandler)
+                .failureHandler(loginFailureHandler)
                 .loginPage("/")
                 .permitAll()
                 .usernameParameter("email")

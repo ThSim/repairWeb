@@ -1,18 +1,24 @@
 package com.codingschool.repairWeb.Controllers.AdminControllers;
 
-import com.codingschool.repairWeb.Model.LoginForm;
+import com.codingschool.repairWeb.Domain.Repair;
+import com.codingschool.repairWeb.Services.RepairService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class AdminHomeController {
+
+    @Autowired
+    RepairService repairService;
 
     private static final String FULL_NAME = "fullName";
 
@@ -22,12 +28,14 @@ public class AdminHomeController {
             model.addAttribute(FULL_NAME, session.getAttribute("fullName"));
         else
             model.addAttribute(FULL_NAME, null);
-        addUsernameInModel(model);
+
+        List<Repair> repairs = repairService.findAdminRepairs();
+        System.out.println(repairs.get(1).getPrice());
 
         return "admin";
     }
 
-    private void addUsernameInModel(Model model) {
+    /*private void addUsernameInModel(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             String username = (String) auth.getPrincipal();
@@ -35,6 +43,5 @@ public class AdminHomeController {
         } else {
             model.addAttribute("errorMessage", "User not logged in anymore!");
         }
-
-    }
+    }*/
 }

@@ -22,20 +22,21 @@ public class LoginController {
     private static final String LOGIN_FORM = "loginForm";
     private static final String FULL_NAME = "fullName";
     private static final String FLAG = "flag";
+    private static final String ERROR_MSG = "errorMsg";
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login(HttpSession session,Model model, @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
+
             LOG.error("User not found!");
-            model.addAttribute("errorMessage", "User not found! Please try again");
+
+            //.getSession().setAttribute(ERROR_MSG
+            model.addAttribute(ERROR_MSG, session.getAttribute(ERROR_MSG));
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if(!auth.getPrincipal().equals("anonymousUser")){
-            System.out.println(auth.getPrincipal().toString());
-            System.out.println("Ein auth twra");
-        }
         model.addAttribute(FLAG, !auth.getPrincipal().equals("anonymousUser"));
 
         model.addAttribute(LOGIN_FORM, new LoginForm());

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.core.AuthenticationException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
             throw new InvalidCredentialsException("User not found man!");
         }
         else {
-            //save user?
             return user;
         }
     }

