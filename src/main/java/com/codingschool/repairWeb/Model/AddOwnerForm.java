@@ -10,6 +10,15 @@ public class AddOwnerForm {
     private String pass;
     private String plate;
     private String brand;
+    private String color;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getPlate() {
         return plate;

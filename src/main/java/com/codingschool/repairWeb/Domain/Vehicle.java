@@ -17,6 +17,9 @@ public class Vehicle {
     @Column
     private String brand;
 
+    @Column
+    private String color;
+
     @ManyToOne(optional=false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -27,9 +30,10 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String plate, String brand, User user) {
+    public Vehicle(String plate, String brand, String color, User user) {
         this.plate = plate;
         this.brand = brand;
+        this.color = color;
         this.user = user;
     }
 
@@ -43,6 +47,14 @@ public class Vehicle {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getPlate() {

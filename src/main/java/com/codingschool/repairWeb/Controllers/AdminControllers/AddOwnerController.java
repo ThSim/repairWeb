@@ -25,7 +25,6 @@ public class AddOwnerController {
     @Autowired
     private VehicleService vehicleService;
 
-    //Sample search page to demonstrate functionality. Ignore for now.
     @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
     public String getAddView(Model model) {
         model.addAttribute(ADD_FORM, new AddOwnerForm());
@@ -37,7 +36,7 @@ public class AddOwnerController {
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
         User userToAdd = new User(addOwnerForm.getMail(), addOwnerForm.getPass(), addOwnerForm.getAfm(), addOwnerForm.getName(), addOwnerForm.getSurname(), addOwnerForm.getAddress(),false);
-        Vehicle veh = new Vehicle(addOwnerForm.getPlate(), addOwnerForm.getBrand(),userToAdd);
+        Vehicle veh = new Vehicle(addOwnerForm.getPlate(), addOwnerForm.getBrand(),addOwnerForm.getColor(), userToAdd);
         userToAdd.addVeh(veh);
 
         userService.save(userToAdd);
