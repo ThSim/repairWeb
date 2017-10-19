@@ -2,7 +2,6 @@ package com.codingschool.repairWeb.Domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,15 +18,14 @@ public class Part implements Serializable {
     private double cost ;
 
 
-    @ManyToMany(mappedBy="partList",fetch=FetchType.LAZY,targetEntity = Repair.class)
-    private List repairList;
+    @ManyToMany(mappedBy="parts",fetch=FetchType.LAZY,targetEntity = Repair.class)
+    private List repairs;
 
 
     Part(){
     }
 
-    public Part(long id, String type, double cost) {
-        this.partId = id ;
+    public Part(String type, double cost) {
         this.type = type ;
         this.cost = cost ;
     }
@@ -55,10 +53,10 @@ public class Part implements Serializable {
     public void setCost(double cost) { this.cost = cost; }
 
     public List getRepairList() {
-        return repairList;
+        return repairs;
     }
 
-    public void setRepairList(List repairList) {
-        this.repairList = repairList;
+    public void setRepairList(List repairs) {
+        this.repairs = repairs;
     }
 }

@@ -6,8 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface PartRepository extends JpaRepository<Part, Long> {
-   ArrayList<Part> showAll();
+   List<Part> findAll();
+
+   Part save(Part part);
+
 }
