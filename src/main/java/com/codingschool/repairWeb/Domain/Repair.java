@@ -3,6 +3,8 @@ package com.codingschool.repairWeb.Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Repair implements Serializable {
@@ -24,6 +26,14 @@ public class Repair implements Serializable {
     @Column
     private double price;
 
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable( joinColumns =@JoinColumn(name="repair_id", referencedColumnName="id"),
+                                inverseJoinColumns= @JoinColumn(name="part_id", referencedColumnName="partId") )
+    private List<Part> parts = new ArrayList<>();
+
+
+
     public Repair() {
     }
 
@@ -32,6 +42,10 @@ public class Repair implements Serializable {
         this.dateTime = dateTime;
         this.status = status;
         this.price = price;
+    }
+
+    public void addPart(Part part){
+        parts.add(part);
     }
 
     public Long getId() {
@@ -72,5 +86,14 @@ public class Repair implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+
+    public List<Part> getParts() {
+        return parts;
+    }
+
+    public void setParts(List<Part> parts) {
+        this.parts = parts;
     }
 }
