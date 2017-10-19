@@ -21,6 +21,7 @@ public class AdminHomeController {
     RepairService repairService;
 
     private static final String FULL_NAME = "fullName";
+    private static final String ADMIN_REPAIRS = "repairList";
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model,HttpSession session) {
@@ -30,8 +31,7 @@ public class AdminHomeController {
             model.addAttribute(FULL_NAME, null);
 
         List<Repair> repairs = repairService.findAdminRepairs();
-        System.out.println(repairs.get(1).getPrice());
-
+        model.addAttribute(ADMIN_REPAIRS,repairs);
         return "admin";
     }
 

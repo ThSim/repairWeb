@@ -40,7 +40,7 @@ public class PartController {
        /* List<Part> parts = new ArrayList<>();
         parts = partService.showAll();*/
 
-        Vehicle vehicle = vehicleService.findByPlate("sno-1234");
+        Vehicle vehicle = vehicleService.findByPlate("MKO-1234");
 
         List<Repair> repairs = vehicle.getRepairs();
         if(!repairs.isEmpty()){

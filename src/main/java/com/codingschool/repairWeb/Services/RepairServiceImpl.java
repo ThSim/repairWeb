@@ -24,7 +24,7 @@ public class RepairServiceImpl implements RepairService{
     @Override
     public List<Repair> findAdminRepairs() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return repairRepository.findByDateTimeAfterOrderByDateTimeDesc(localDateTime);
+        return repairRepository.findTop10ByDateTimeAfterOrderByDateTimeAsc(localDateTime);
     }
 
 
