@@ -1,0 +1,22 @@
+package com.codingschool.repairWeb.Services;
+
+import com.codingschool.repairWeb.Domain.Part;
+import com.codingschool.repairWeb.Repository.PartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
+
+@Service
+@Transactional
+public class PartServiceImpl implements PartService {
+
+    @Autowired
+    private  PartRepository partRepo;
+
+    @Override
+    public ArrayList<Part> showAll() {
+        return partRepo.showAll();
+    }
+}
+
