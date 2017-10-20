@@ -25,6 +25,7 @@ public class LoginController {
     private static final String ERROR_MSG = "errorMsg";
 
 
+//test
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login(HttpSession session,Model model, @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
