@@ -1,6 +1,8 @@
 package com.codingschool.repairWeb.Model;
 
 public class AddOwnerForm {
+
+    private Long id;
     private String name;
     private String mail;
     private String afm;
@@ -8,33 +10,10 @@ public class AddOwnerForm {
     private Boolean isAdmin;
     private String address;
     private String pass;
-    private String plate;
-    private String brand;
-    private String color;
 
-    public String getColor() {
-        return color;
-    }
+    public Long getId() { return id; }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getPlate() {
-        return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+    public void setId(Long id) { this.id = id; }
 
     public String getName() {
         return name;
