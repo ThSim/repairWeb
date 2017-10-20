@@ -15,6 +15,10 @@ public interface UserService {
 
     User findByMail(String mail);
 
+    User findByAfm(String afm);
+
+    User findById(Long id);
+
     List<Repair> fetchRepairs();
 
 }
