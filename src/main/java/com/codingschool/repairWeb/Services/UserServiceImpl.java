@@ -42,6 +42,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByAfm(String afm){
+        return userRepository.findByAfm(afm);
+    }
+    @Override
+    public User findById(Long id){
+        return userRepository.findById(id);
+    }
+
+    @Override
     public List<Repair> fetchRepairs(){
         List<Repair> repairs = new LinkedList<>();
         String mail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
