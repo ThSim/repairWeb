@@ -1,4 +1,4 @@
-package com.codingschool.repairWeb.Controllers.AdminControllers;
+package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 
 import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Domain.Vehicle;
@@ -25,24 +25,24 @@ public class AddOwnerController {
     @Autowired
     private VehicleService vehicleService;
 
-    @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/owner", method = RequestMethod.GET)
     public String getAddView(Model model) {
         model.addAttribute(ADD_FORM, new AddOwnerForm());
         return "add";
     }
 
-    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/owner/add", method = RequestMethod.POST)
     public String doAdd(@ModelAttribute(ADD_FORM) AddOwnerForm addOwnerForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
         User userToAdd = new User(addOwnerForm.getMail(), addOwnerForm.getPass(), addOwnerForm.getAfm(), addOwnerForm.getName(), addOwnerForm.getSurname(), addOwnerForm.getAddress(),false);
-        Vehicle veh = new Vehicle(addOwnerForm.getPlate(), addOwnerForm.getBrand(),addOwnerForm.getColor(), userToAdd);
-        userToAdd.addVeh(veh);
+        //Vehicle veh = new Vehicle(addOwnerForm.getPlate(), addOwnerForm.getBrand(),addOwnerForm.getColor(), userToAdd);
+        //userToAdd.addVeh(veh);
 
         userService.save(userToAdd);
-        vehicleService.save(veh);
+        //vehicleService.save(veh);
 
-        return "redirect:/admin/add";
+        return "redirect:/admin/owner";
     }
 
 }

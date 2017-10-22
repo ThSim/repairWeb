@@ -21,4 +21,6 @@ public interface UserService {
 
     List<Repair> fetchRepairs();
 
+    List<User> find50UsersWithSurnameAfter(String surname);
+
 }

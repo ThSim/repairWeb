@@ -27,41 +27,47 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String mail, String pass) {
-        User user =  userRepository.findByMailAndPass(mail, pass);
-        if(user == null){
+        User user = userRepository.findByMailAndPass(mail, pass);
+        if (user == null) {
             throw new InvalidCredentialsException("User not found man!");
-        }
-        else {
+        } else {
             return user;
         }
     }
 
     @Override
-    public User findByMail(String mail){
+    public User findByMail(String mail) {
         return userRepository.findByMail(mail);
     }
 
     @Override
-    public User findByAfm(String afm){
+    public User findByAfm(String afm) {
         return userRepository.findByAfm(afm);
     }
+
     @Override
-    public User findById(Long id){
+    public User findById(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public List<Repair> fetchRepairs(){
+    public List<Repair> fetchRepairs() {
         List<Repair> repairs = new LinkedList<>();
         String mail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         User user = findByMail(mail);
         List<Vehicle> vehicles = user.getVehicles();
 
         //add repairs for each vehicle to list //maybe by status
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles) {
             repairs.addAll(vehicle.getRepairs());
         }
         return repairs;
     }
+
+    @Override
+    public List<User> find50UsersWithSurnameAfter(String surname) {
+        return userRepository.findTop50BySurnameAfterOrderBySurname(surname);
+    }
+
 
 }

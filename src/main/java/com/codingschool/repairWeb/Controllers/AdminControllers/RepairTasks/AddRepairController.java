@@ -1,4 +1,4 @@
-package com.codingschool.repairWeb.Controllers.AdminControllers;
+package com.codingschool.repairWeb.Controllers.AdminControllers.RepairTasks;
 
 import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Domain.Vehicle;

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class VehicleServiceImpl implements VehicleService{
@@ -24,5 +26,10 @@ public class VehicleServiceImpl implements VehicleService{
         Vehicle veh = vehicleRepository.findByPlate(plate);
 
         return veh;
+    }
+
+    @Override
+    public List<Vehicle> find50VehiclesWithPlateAfter(String plate) {
+        return vehicleRepository.findTop50ByPlateAfterOrderByPlate(plate);
     }
 }

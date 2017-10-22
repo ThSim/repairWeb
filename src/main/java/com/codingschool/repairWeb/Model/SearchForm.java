@@ -1,30 +1,22 @@
 package com.codingschool.repairWeb.Model;
 
 public class SearchForm {
-    private String title;
-    private String afm;
-    private String mail;
+    private String search;
+    private String whatToSearch;
 
-    public String getAfm() { return afm; }
-
-    public void setAfm(String afm) {
-        this.afm = afm;
+    public String getSearch() {
+        return search;
     }
 
-    public String getMail() {
-        return mail;
+    public void setSearch(String search) {
+        this.search = search;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public String getWhatToSearch() {
+        return whatToSearch;
     }
 
-    public String getTitle() {
-        return title;
+    public void setWhatToSearch(String whatToSearch) {
+        this.whatToSearch = whatToSearch;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
 }

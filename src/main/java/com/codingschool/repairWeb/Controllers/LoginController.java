@@ -27,7 +27,7 @@ public class LoginController {
 
 //test
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String login(HttpSession session,Model model, @RequestParam(name = "error", required = false) String error) {
+    public String login(HttpSession session, Model model, @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
 
             LOG.error("User not found!");
@@ -41,7 +41,7 @@ public class LoginController {
         model.addAttribute(FLAG, !auth.getPrincipal().equals("anonymousUser"));
 
         model.addAttribute(LOGIN_FORM, new LoginForm());
-        if(session.getAttribute("fullName")!=null)
+        if (session.getAttribute("fullName") != null)
             model.addAttribute(FULL_NAME, session.getAttribute("fullName"));
         else
             model.addAttribute(FULL_NAME, null);

@@ -56,7 +56,7 @@ public class SearchController {
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
         User owner = null;
-        if (!searchForm.getAfm().equals("")) {
+        /*if (!searchForm.getAfm().equals("")) {
             owner = userService.findByAfm(searchForm.getAfm());
         } else if (searchForm.getMail() != null) {
             owner = userService.findByMail(searchForm.getMail());
@@ -67,7 +67,7 @@ public class SearchController {
         if (owner == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "No users \t" + searchForm.getAfm() + "\tfound");
         }
-        //map edw key,value//
+        //map edw key,value//*/
         redirectAttributes.addFlashAttribute(OWNERLIST, owner);
         return "redirect:/results";
     }
