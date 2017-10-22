@@ -20,6 +20,7 @@ public class HomeVehicleController {
 
     private static final String SEARCH_FORM = "searchForm";
     private static final String VEHICLES_LIST = "vehiclesList";
+    private static final String PROFILE_DES="profile";
 
     @Autowired
     private VehicleService vehicleService;
@@ -42,6 +43,7 @@ public class HomeVehicleController {
         //Edw tha steiloume mprosta kai mia lista me apotelesmata owners
         //Either from database alphabetically or a search result
         model.addAttribute(VEHICLES_LIST,result);
+        model.addAttribute(PROFILE_DES,"/admin");
         return "admin/vehicles";
     }
 

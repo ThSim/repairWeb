@@ -1,0 +1,55 @@
+div.container{
+  background-color:rgb(45,42,42);
+  padding-right:5%;
+  padding-left:3%;
+  width:100%;
+}
+
+.navbar-nav > li > a{
+  color:rgb(213,206,206);
+}
+
+ul.nav.navbar-nav.navbar-left{
+  padding-left:5%;
+  font-size:medium;
+}
+
+a.navbar-brand.text-danger{
+  font-family:monospace;
+  font-style:oblique;
+  font-stretch:expanded;
+  font-size:200%;
+  color:rgb(220,45,34);
+}
+
+#sideout{
+  color:#2b2b2b;
+  z-index:1000;
+  position:fixed;
+  left:250px;
+  width:15%;
+  height:100%;
+  margin-top:0;
+  margin-left:-250px;
+  overflow-y:auto;
+  background:#2d2a2a;
+  -webkit-transition:all 0.5s ease;
+  -moz-transition:all 0.5s ease;
+  transition:all 0.5s ease;
+}
+
+#side > ul{
+  padding-top:35%;
+  padding-left:5%;
+}
+
+#side > ul > li > a{
+  font-size:medium;
+}
+
+body{
+  background:url("../../assets/img/auto.jpg");
+  background-size:100%;
+  background-repeat:no-repeat;
+}
+
