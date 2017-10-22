@@ -24,6 +24,7 @@ public class HomeOwnerController {
 
     private static final String SEARCH_FORM = "searchForm";
     private static final String OWNERS_LIST = "ownersList";
+    private static final String PROFILE_DES="profile";
 
     @Autowired
     private UserService userService;
@@ -46,6 +47,7 @@ public class HomeOwnerController {
         //Edw tha steiloume mprosta kai mia lista me apotelesmata owners
         //Either from database alphabetically or a search result
         model.addAttribute(OWNERS_LIST,result);
+        model.addAttribute(PROFILE_DES,"/admin");
         return "admin/owners";
     }
 

@@ -8,8 +8,6 @@ import com.codingschool.repairWeb.Repository.UserRepository;
 import com.codingschool.repairWeb.Repository.VehicleRepository;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 import java.util.concurrent.ThreadLocalRandom;
 

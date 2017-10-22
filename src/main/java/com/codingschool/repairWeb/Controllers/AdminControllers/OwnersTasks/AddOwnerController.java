@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class AddOwnerController {
@@ -22,27 +24,21 @@ public class AddOwnerController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private VehicleService vehicleService;
 
-    @RequestMapping(value = "/admin/owner", method = RequestMethod.GET)
-    public String getAddView(Model model) {
-        model.addAttribute(ADD_FORM, new AddOwnerForm());
-        return "add";
-    }
-
-    @RequestMapping(value = "/admin/owner/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/owners/add", method = RequestMethod.POST)
     public String doAdd(@ModelAttribute(ADD_FORM) AddOwnerForm addOwnerForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
         User userToAdd = new User(addOwnerForm.getMail(), addOwnerForm.getPass(), addOwnerForm.getAfm(), addOwnerForm.getName(), addOwnerForm.getSurname(), addOwnerForm.getAddress(),false);
-        //Vehicle veh = new Vehicle(addOwnerForm.getPlate(), addOwnerForm.getBrand(),addOwnerForm.getColor(), userToAdd);
-        //userToAdd.addVeh(veh);
+
+        //Initialize results list
+        List<User> result = new LinkedList<>();
 
         userService.save(userToAdd);
-        //vehicleService.save(veh);
-
-        return "redirect:/admin/owner";
+        //edw an kati paei strava mporoume na petame exception me minima pou tha emfanizetai sto modal
+        result.add(userToAdd);
+        redirectAttributes.addFlashAttribute("resultList", result);
+        return "redirect:/admin/owners";
     }
 
 }

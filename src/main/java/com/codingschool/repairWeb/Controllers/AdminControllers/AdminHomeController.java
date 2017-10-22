@@ -22,6 +22,8 @@ public class AdminHomeController {
 
     private static final String FULL_NAME = "fullName";
     private static final String ADMIN_REPAIRS = "repairList";
+    private static final String PROFILE_DES="profile";
+
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model,HttpSession session) {
@@ -32,7 +34,8 @@ public class AdminHomeController {
 
         List<Repair> repairs = repairService.findAdminRepairs();
         model.addAttribute(ADMIN_REPAIRS,repairs);
-        return "admin";
+        model.addAttribute(PROFILE_DES,"/admin");
+        return "admin/admin";
     }
 
     /*private void addUsernameInModel(Model model) {
