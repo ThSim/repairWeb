@@ -15,7 +15,7 @@
         <div class="hello">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="text" name="search" placeholder="Search"/>
-            <label class="boardmsg"> Search by:</label>
+            <label > Search by:</label>
             <select name="whatToSearch">
                 <option value="afm">AFM</option>
                 <option value="mail">E-Mail</option>

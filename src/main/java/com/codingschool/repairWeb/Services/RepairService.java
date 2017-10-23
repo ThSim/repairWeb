@@ -8,4 +8,6 @@ public interface RepairService {
     void save(Repair rep);
 
     List<Repair> findAdminRepairs();
+
+    List<Repair> find50Repairs();
 }

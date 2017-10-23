@@ -20,8 +20,7 @@ public class HomeOwnerController {
 
     private static final String SEARCH_FORM = "searchForm";
     private static final String OWNERS_LIST = "ownersList";
-    private static final String PROFILE_DES="profile";
-    private static final String EDIT_FORM = "editOwnerForm";
+    private static final String PROFILE_DES = "profile";
 
     @Autowired
     private UserService userService;
