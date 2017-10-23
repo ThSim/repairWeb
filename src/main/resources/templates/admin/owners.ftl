@@ -262,5 +262,6 @@
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editown.js'/>"></script>
+<script src="<@spring.url '/js/addveh.js'/>"></script>
 
 </@c.page>
