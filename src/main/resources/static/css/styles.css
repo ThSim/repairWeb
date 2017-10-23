@@ -23,6 +23,12 @@ a:hover{
 .btn, .well, .panel{
 }
 
+.editb, .delb, .plub {
+  padding:5px 10px !important;
+
+
+}
+
 .btn-danger{
   background-color:#f44d3c;
 }
