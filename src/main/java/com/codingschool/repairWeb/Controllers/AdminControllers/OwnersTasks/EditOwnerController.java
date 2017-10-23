@@ -28,14 +28,17 @@ public class EditOwnerController {
                               RedirectAttributes redirectAttributes) {
 
 
-        User userEdit = new User(ownerForm.getId(),ownerForm.getMail(),ownerForm.getAfm(),ownerForm.getName(),ownerForm.getSurname(),ownerForm.getAddress());
-
+        User userEdit = userService.findById(ownerForm.getId());
+        userEdit.setAddress(ownerForm.getAddress());
+        userEdit.setAfm(ownerForm.getAfm());
+        userEdit.setMail(ownerForm.getMail());
+        userEdit.setName(ownerForm.getName());
+        userEdit.setSurname(ownerForm.getSurname());
         userService.save(userEdit);
 
         List<User> result = new LinkedList<>();
 
-
-        result.add(userService.findByAfm(ownerForm.getAfm()));
+        result.add(userService.findById(ownerForm.getId()));
 
         redirectAttributes.addFlashAttribute("resultList", result);
         return "redirect:/admin/owners";
