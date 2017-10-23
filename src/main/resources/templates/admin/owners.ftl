@@ -36,70 +36,69 @@
 
                     <#if ownersList??>
                     <div class="col-md-12">
-                    <div class="table-responsive" style="background: gainsboro">
+                        <div class="table-responsive" style="background: gainsboro">
 
-                        <table id="mytable" class="table table-striped">
-                            <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
+                            <table id="mytable" class="table table-striped">
+                                <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
 
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>AFM</th>
-                            <th>E-Mail</th>
-                            <th>Address</th>
-                            <th>Password</th>
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>AFM</th>
+                                <th>E-Mail</th>
+                                <th>Address</th>
+                                <th>Password</th>
 
-                            <th>Edit</th>
-                            <th>Add Vehicle</th>
-                            <th>Delete</th>
+                                <th>Edit</th>
+                                <th>Add Vehicle</th>
+                                <th>Delete</th>
 
-                            </thead>
-                            <tbody>
-                                <#list ownersList as owner>
-                                <tr>
-                                <tr>
-                                    <td class="name">${owner.name}</td>
-                                    <td class="surname">${owner.surname}</td>
-                                    <td class="afm">${owner.afm}</td>
-                                    <td class="mail">${owner.mail}</td>
-                                    <td class="address">${owner.address}</td>
-                                    <td class="password">${owner.pass}</td>
-                                    <td>
-                                        <p data-placement="top" data-toggle="modal" title="Edit">
-                                            <button id="edit" class="editb btn btn-primary btn-xs" data-title="Edit"
-                                                    data-toggle="modal"
-                                                    data-target="#editVehicleModal"><span
-                                                    class="glyphicon glyphicon-pencil"></span>
-                                            </button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Add">
-                                            <button id="edit" class="plub btn btn-warning btn-xs" data-title="Add"
-                                                    data-toggle="modal"
-                                                    data-target="#add"><span class="glyphicon glyphicon-plus"></span>
-                                            </button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button id="edit" class="delb btn btn-danger btn-xs" data-title="Delete"
-                                                    data-toggle="modal"
-                                                    data-target="#delete"><span
-                                                    class="glyphicon glyphicon-trash"></span>
-                                            </button>
-                                        </p>
-                                    </td>
+                                </thead>
+                                <tbody>
+                                    <#list ownersList as owner>
+                                    <tr>
+                                        <td class="name">${owner.name}</td>
+                                        <td class="surname">${owner.surname}</td>
+                                        <td class="afm">${owner.afm}</td>
+                                        <td class="mail">${owner.mail}</td>
+                                        <td class="address">${owner.address}</td>
+                                        <td class="password">${owner.pass}</td>
+                                        <td>
+                                            <p data-placement="top" data-toggle="modal" title="Edit">
+                                                <button id="edit" class="editb btn btn-primary btn-xs" data-title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#editVehicleModal"><span
+                                                        class="glyphicon glyphicon-pencil"></span>
+                                                </button>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p data-placement="top" data-toggle="tooltip" title="Add">
+                                                <button id="edit" class="plub btn btn-warning btn-xs" data-title="Add"
+                                                        data-toggle="modal"
+                                                        data-target="#add"><span
+                                                        class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button id="edit" class="delb btn btn-danger btn-xs" data-title="Delete"
+                                                        data-toggle="modal"
+                                                        data-target="#delete"><span
+                                                        class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    </#list>
+                                </tbody>
 
-                                </tr>
-                                </#list>
-                            </tbody>
-
-                        </table>
-
+                            </table>
+                        </div>
                     <#else>
                         <h2> No Owners have found!</h2>
                     </#if>
-                </div>
+
                 </div>
                 </div>
             </div>
