@@ -4,6 +4,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 
 import com.codingschool.repairWeb.Controllers.OwnerControllers.OwnerHomeController;
 import com.codingschool.repairWeb.Domain.User;
+import com.codingschool.repairWeb.Model.OwnerForm;
 import com.codingschool.repairWeb.Model.SearchForm;
 import com.codingschool.repairWeb.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class HomeOwnerController {
     private static final String SEARCH_FORM = "searchForm";
     private static final String OWNERS_LIST = "ownersList";
     private static final String PROFILE_DES="profile";
+    private static final String EDIT_FORM = "editOwnerForm";
 
     @Autowired
     private UserService userService;
@@ -32,7 +34,7 @@ public class HomeOwnerController {
 
     @RequestMapping(value = "/admin/owners", method = RequestMethod.GET)
     public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<User> resultList ) {
-        model.addAttribute(SEARCH_FORM, new SearchForm());
+        model.addAttribute(SEARCH_FORM, new OwnerForm() );
 
         List<User> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search

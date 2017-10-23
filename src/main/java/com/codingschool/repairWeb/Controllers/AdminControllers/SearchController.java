@@ -2,7 +2,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers;
 
 import com.codingschool.repairWeb.Converters.UserConverter;
 import com.codingschool.repairWeb.Domain.User;
-import com.codingschool.repairWeb.Model.AddOwnerForm;
+import com.codingschool.repairWeb.Model.OwnerForm;
 import com.codingschool.repairWeb.Model.SearchForm;
 import com.codingschool.repairWeb.Services.UserService;
 import org.slf4j.LoggerFactory;
@@ -74,7 +74,7 @@ public class SearchController {
 
 
     @RequestMapping(value = "/results", method = RequestMethod.POST)  //Edw se POST!!
-    public ResponseEntity<User> resultsUser(@RequestBody AddOwnerForm addForm, Model model,
+    public ResponseEntity<User> resultsUser(@RequestBody OwnerForm addForm, Model model,
                                             HttpSession session,
                                             RedirectAttributes redirectAttributes) {
 

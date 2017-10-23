@@ -3,6 +3,7 @@ jQuery('.editb').on('click', function() {
     /* alert("You want to edit vehicle with: Plate number " + $('.plate', $tr).text()
          + ", Brand: " + $('.brand', $tr).text()
          + ", Color: " + $('.color', $tr).text());*/
+    $(".modal-body #id").val(  $('.id', $tr).text() );
     $(".modal-body #name").val(  $('.name', $tr).text() );
     $(".modal-body #surname").val(  $('.surname', $tr).text() );
     $(".modal-body #mail").val(  $('.mail', $tr).text() );

@@ -1,13 +1,10 @@
 package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 
 import com.codingschool.repairWeb.Domain.User;
-import com.codingschool.repairWeb.Domain.Vehicle;
-import com.codingschool.repairWeb.Model.AddOwnerForm;
+import com.codingschool.repairWeb.Model.OwnerForm;
 import com.codingschool.repairWeb.Services.UserService;
-import com.codingschool.repairWeb.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,10 +23,10 @@ public class AddOwnerController {
 
 
     @RequestMapping(value = "/admin/owners/add", method = RequestMethod.POST)
-    public String doAdd(@ModelAttribute(ADD_FORM) AddOwnerForm addOwnerForm,
+    public String doAdd(@ModelAttribute(ADD_FORM) OwnerForm ownerForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
-        User userToAdd = new User(addOwnerForm.getMail(), addOwnerForm.getPass(), addOwnerForm.getAfm(), addOwnerForm.getName(), addOwnerForm.getSurname(), addOwnerForm.getAddress(),false);
+        User userToAdd = new User(ownerForm.getMail(), ownerForm.getPass(), ownerForm.getAfm(), ownerForm.getName(), ownerForm.getSurname(), ownerForm.getAddress(),false);
 
         //Initialize results list
         List<User> result = new LinkedList<>();

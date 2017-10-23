@@ -1,6 +1,6 @@
 package com.codingschool.repairWeb.Model;
 
-public class AddOwnerForm {
+public class OwnerForm {
 
     private Long id;
     private String name;

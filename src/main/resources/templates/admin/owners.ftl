@@ -41,6 +41,7 @@
                             <table id="mytable" class="table table-striped">
                                 <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
 
+                                <th style ="display:none;">Id</th>
                                 <th>Name</th>
                                 <th>Last Name</th>
                                 <th>AFM</th>
@@ -56,6 +57,7 @@
                                 <tbody>
                                     <#list ownersList as owner>
                                     <tr>
+                                        <td style ="display:none;" class="id">${owner.id}</td>
                                         <td class="name">${owner.name}</td>
                                         <td class="surname">${owner.surname}</td>
                                         <td class="afm">${owner.afm}</td>
@@ -66,7 +68,7 @@
                                             <p data-placement="top" data-toggle="modal" title="Edit">
                                                 <button id="edit" class="editb btn btn-primary btn-xs" data-title="Edit"
                                                         data-toggle="modal"
-                                                        data-target="#editVehicleModal"><span
+                                                        data-target="#editUserModal"><span
                                                         class="glyphicon glyphicon-pencil"></span>
                                                 </button>
                                             </p>
@@ -119,7 +121,7 @@
                     <div class="text-center">
                         <h4 class="text-danger">${errorMsg!""}</h4>
                     </div>
-                    <form id="loginForm" name="loginForm" action="owners/add"
+                    <form id="addUserForm" name="addUserForm" action="owners/add"
                           class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                         <div class="form-group">
@@ -158,6 +160,53 @@
 
 <#-- Edit User Modal -->
 
+    <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="text-center">Edit User</h2>
+                </div>
+                <div class="modal-body row">
+                    <div class="text-center">
+                        <h4 class="text-danger">${errorMsg!""}</h4>
+                    </div>
+                    <form id="editUserForm" name="editUserForm" action="owners/edit"
+                          class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
+
+                        <div class="form-group">
+                            <!--{% csrf_token %}-->
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input type="hidden" id="id" name="id"/>
+                            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="surname" name="surname"
+                                   placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="afm" name="afm" placeholder="AFM">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="address" name="address"
+                                   placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 <!--scripts loaded here-->
@@ -166,5 +215,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
+<script src="<@spring.url '/js/editown.js'/>"></script>
 
 </@c.page>
