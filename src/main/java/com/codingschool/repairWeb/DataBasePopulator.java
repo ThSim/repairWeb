@@ -8,6 +8,8 @@ import com.codingschool.repairWeb.Repository.UserRepository;
 import com.codingschool.repairWeb.Repository.VehicleRepository;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -26,7 +28,7 @@ public class DataBasePopulator{
     @Autowired
     public void DataLoader(UserRepository userRepository) {
         this.userRepository = userRepository;
-        produceUsers(69);
+        produceUsers(10);
     }
 
     public void produceUsers(int numberOfUsers) {

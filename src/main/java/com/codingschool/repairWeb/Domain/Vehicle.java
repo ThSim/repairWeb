@@ -24,7 +24,7 @@ public class Vehicle {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "vehicle", targetEntity = Repair.class, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicle",cascade=CascadeType.REMOVE, targetEntity = Repair.class)
     private List<Repair> repairs = new ArrayList<>();
 
     public Vehicle() {

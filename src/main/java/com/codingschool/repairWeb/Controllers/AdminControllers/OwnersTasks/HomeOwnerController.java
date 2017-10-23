@@ -2,10 +2,8 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 
 //Here we will display the owners and display a search box for them
 
-import com.codingschool.repairWeb.Controllers.OwnerControllers.OwnerHomeController;
 import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Model.OwnerForm;
-import com.codingschool.repairWeb.Model.SearchForm;
 import com.codingschool.repairWeb.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,12 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HomeOwnerController {
@@ -30,7 +25,6 @@ public class HomeOwnerController {
 
     @Autowired
     private UserService userService;
-
 
     @RequestMapping(value = "/admin/owners", method = RequestMethod.GET)
     public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<User> resultList ) {

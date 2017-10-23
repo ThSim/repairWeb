@@ -23,4 +23,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     List<User> findTop50BySurnameAfterOrderBySurname(String surname);
 
+    void deleteById(Long id);
 }
