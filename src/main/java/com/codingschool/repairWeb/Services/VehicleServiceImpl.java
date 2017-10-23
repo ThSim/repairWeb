@@ -20,6 +20,7 @@ public class VehicleServiceImpl implements VehicleService{
         vehicleRepository.save(veh);
     }
 
+
     @Override
     public Vehicle findByPlate(String plate){
 

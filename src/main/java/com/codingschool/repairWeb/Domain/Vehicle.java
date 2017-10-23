@@ -30,6 +30,13 @@ public class Vehicle {
     public Vehicle() {
     }
 
+    public Vehicle(Long id,String plate, String brand, String color) {
+        this.id = id ;
+        this.plate = plate;
+        this.brand = brand;
+        this.color = color;
+    }
+
     public Vehicle(String plate, String brand, String color, User user) {
         this.plate = plate;
         this.brand = brand;

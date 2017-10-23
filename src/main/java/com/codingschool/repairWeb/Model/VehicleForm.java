@@ -1,10 +1,19 @@
 package com.codingschool.repairWeb.Model;
 
-public class AddVehicleForm {
+public class VehicleForm {
 
     private String plate;
     private String brand;
     private String color;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getPlate() {
         return plate;

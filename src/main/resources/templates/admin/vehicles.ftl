@@ -33,7 +33,7 @@
 
                             <table id="mytable" class="table table-striped">
                                 <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
-
+                                <th style="display: none;">Id</th>
                                 <th>Plate</th>
                                 <th>Brand</th>
                                 <th>Color</th>
@@ -47,6 +47,7 @@
                                 <tbody>
                                     <#list vehiclesList as vehicle>
                                     <tr>
+                                        <td class="id" style="display: none;">${vehicle.id}</td>
                                         <td class="plate">${vehicle.plate}</td>
                                         <td class="brand">${vehicle.brand}</td>
                                         <td class="color">${vehicle.color}</td>
@@ -96,6 +97,10 @@
         </div>
     </div>
 
+<#-- ADD Vehicle Modal -->
+
+
+
 
 
 <#-- Edit Vehicle Modal -->
@@ -111,12 +116,13 @@
                     <div class="text-center">
                         <h4 class="text-danger">${errorMsg!""}</h4>
                     </div>
-                    <form id="vehicleForm" name="vehicleForm" action="vehicles/edit"
+                    <form id="editVehicleForm" name="editVehicleForm" action="vehicles/edit"
                           class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                         <div class="form-group">
                             <!--{% csrf_token %}-->
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input type="hidden" id="id" name="id"/>
                             <input type="text" class="form-control input-lg" id="plate" name="plate"
                                    placeholder="Plate">
                         </div>

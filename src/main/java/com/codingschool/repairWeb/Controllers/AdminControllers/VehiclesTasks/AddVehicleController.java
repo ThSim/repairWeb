@@ -2,7 +2,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.VehiclesTasks;
 
 import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Domain.Vehicle;
-import com.codingschool.repairWeb.Model.AddVehicleForm;
+import com.codingschool.repairWeb.Model.VehicleForm;
 import com.codingschool.repairWeb.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +22,18 @@ public class AddVehicleController {
 
     @RequestMapping(value = "/admin/vehicles/add", method = RequestMethod.GET)
     public String getAddView(Model model) {
-        model.addAttribute(ADD_FORM, new AddVehicleForm());
+        model.addAttribute(ADD_FORM, new VehicleForm());
         return "vehicles/add";
     }
 
     @RequestMapping(value = "/admin/vehicle/add", method = RequestMethod.POST)
-    public String doAdd(@ModelAttribute(ADD_FORM) AddVehicleForm addVehicleForm,
+    public String doAdd(@ModelAttribute(ADD_FORM) VehicleForm vehicleForm,
                         RedirectAttributes redirectAttributes) {
 
         //must get user we want to add the car
         //we will redirect here from the owners page?
         User userToAdd = null;
-        Vehicle veh = new Vehicle(addVehicleForm.getPlate(), addVehicleForm.getBrand(), addVehicleForm.getColor(), userToAdd);
+        Vehicle veh = new Vehicle(vehicleForm.getPlate(), vehicleForm.getBrand(), vehicleForm.getColor(), userToAdd);
 
         vehicleService.save(veh);
 
