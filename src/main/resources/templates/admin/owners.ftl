@@ -121,7 +121,7 @@
                 </div>
                 <div class="modal-body row">
                     <div class="text-center">
-                        <h4 class="text-danger">${errorMsg!""}</h4>
+                       <h4 class="text-danger">${errorMsg!""}</h4>
                     </div>
                     <form id="addVehicleForm" name="addVehicleForm" action="vehicles/add"
                           class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
