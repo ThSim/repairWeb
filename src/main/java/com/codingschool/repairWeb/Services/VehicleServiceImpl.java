@@ -23,14 +23,18 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public Vehicle findByPlate(String plate){
-
         Vehicle veh = vehicleRepository.findByPlate(plate);
-
         return veh;
     }
 
     @Override
     public List<Vehicle> find50VehiclesWithPlateAfter(String plate) {
         return vehicleRepository.findTop50ByPlateAfterOrderByPlate(plate);
+    }
+
+    @Override
+    public Vehicle findById(Long id) {
+        Vehicle veh = vehicleRepository.findById(id);
+        return veh;
     }
 }

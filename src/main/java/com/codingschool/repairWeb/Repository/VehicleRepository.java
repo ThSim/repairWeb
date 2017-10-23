@@ -16,4 +16,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     Vehicle save(Vehicle veh);
 
     List<Vehicle> findTop50ByPlateAfterOrderByPlate(String plate);
+
+    Vehicle findById(Long id);
 }

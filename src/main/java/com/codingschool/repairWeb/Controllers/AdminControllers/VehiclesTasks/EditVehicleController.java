@@ -27,16 +27,21 @@ public class EditVehicleController {
     public String editVehicle(@ModelAttribute(EDIT_FORM) VehicleForm vehicleForm,
                               RedirectAttributes redirectAttributes){
 
+        Vehicle vehicleEdit = vehicleService.findById(vehicleForm.getId());
 
-
-        Vehicle vehicleEdit = new Vehicle(vehicleForm.getId(),vehicleForm.getPlate(),vehicleForm.getBrand(),vehicleForm.getColor());
-
-
+        vehicleEdit.setBrand(vehicleForm.getBrand());
+        vehicleEdit.setPlate(vehicleForm.getPlate());
+        vehicleEdit.setColor(vehicleForm.getColor());
         vehicleService.save(vehicleEdit);
+
+
 
         List<Vehicle> result = new LinkedList<>();
 
-        result.add(vehicleService.findByPlate(vehicleForm.getPlate()));
+
+        result.add(vehicleService.findById(vehicleForm.getId()));
+
+
 
         redirectAttributes.addFlashAttribute("resultList",result);
         return "redirect:/admin/vehicles" ;

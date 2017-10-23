@@ -11,4 +11,6 @@ public interface VehicleService {
     Vehicle findByPlate(String plate);
 
     List<Vehicle> find50VehiclesWithPlateAfter(String plate);
+
+    Vehicle findById(Long id);
 }
