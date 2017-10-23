@@ -43,7 +43,6 @@ public class SearchOwnerController {
 
         }else{
             //throw some error
-            //also throw exception if no result have found
         }
 
         //add result list to attributes
