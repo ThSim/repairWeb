@@ -108,6 +108,11 @@
         </div>
     </div>
 
+<#-- Add Vehicle Modal -->
+
+
+
+
 
 <#-- Add User Modal -->
     <div id="addUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
