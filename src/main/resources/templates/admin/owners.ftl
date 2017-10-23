@@ -7,14 +7,15 @@
     <#include "/admin/admin_sidebar.ftl">
 
 <div class="plaisio">
-
+    <div class="boardmsg">
     <p class="text-light">
     <h3> Search For a User</h3> </p>
+    </div>
     <form name="searchForm" action="owners/search" method="post">
         <div class="hello">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="text" name="search" placeholder="Search"/>
-            <label> Search by:</label>
+            <label class="boardmsg"> Search by:</label>
             <select name="whatToSearch">
                 <option value="afm">AFM</option>
                 <option value="mail">E-Mail</option>

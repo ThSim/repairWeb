@@ -7,8 +7,9 @@
     <#include "/admin/admin_sidebar.ftl">
 
 <div class="plaisio">
-
+<div class="boardmsg">
     <h3> Search For a Vehicle</h3>
+</div>
     <form name="searchForm" action="vehicles/search" method="post">
         <div class="hello">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

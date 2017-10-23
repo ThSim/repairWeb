@@ -23,6 +23,10 @@ a:hover{
 .btn, .well, .panel{
 }
 
+.boardmsg{
+  color: #cdcdcd;
+}
+
 .editb, .delb, .plub {
   padding:5px 10px !important;
 
