@@ -118,14 +118,24 @@
 
                         <div class="form-group">
                             <!--{% csrf_token %}-->
+
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" id="id" name="id"/>
-                            <input type="text" class="form-control input-lg" id="datetime" name="datetime"
+
+                            <input type="text" class="form-control input-lg" id="datepicker" name="datetime"
                                    placeholder="Datetime">
+
+
+
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="status" name="status"
-                                   placeholder="Status">
+                            <select required class="form-control input-lg">
+                                <option value = "" disabled selected hidden>Status</option>
+                                <option value = "pending">Pending</option>
+                                <option value = "onTheWay">On the way</option>
+                                <option value = "completed">Completed</option>
+                            </select>
+
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control input-lg" id="price" name="price"
@@ -195,4 +205,9 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editveh.js'/>"></script>
 
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+</script>
 </@c.page>
