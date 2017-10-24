@@ -76,7 +76,7 @@
                                         </td>
                                         <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Add">
-                                                <button id="edit" class="plub btn btn-warning btn-xs" data-title="Add"
+                                                <button id="addUser" class="plub btn btn-warning btn-xs" data-title="Add"
                                                         data-toggle="modal"
                                                         data-target="#addVehicleModal"><span
                                                         class="glyphicon glyphicon-plus"></span>
@@ -85,9 +85,9 @@
                                         </td>
                                         <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button id="edit" class="delb btn btn-danger btn-xs" data-title="Delete"
+                                                <button id="delete" class="delb btn btn-danger btn-xs" data-title="Delete"
                                                         data-toggle="modal"
-                                                        data-target="#delete"><span
+                                                        data-target="#deleteModal"><span
                                                         class="glyphicon glyphicon-trash"></span>
                                                 </button>
                                             </p>
@@ -204,6 +204,39 @@
         </div>
     </div>
 
+
+
+    <!-- /.modal-delete -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+              <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+              </div>
+                  <div class="modal-body">
+
+                  <p>You are about to delete.</p>
+                          <p>Do you want to proceed?</p>
+              </div>
+                  <div class="modal-footer ">
+                   <form class="edit_delete_form" action="" method="post" style="display:none">
+                   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                       <input class="iduser" name="id" value=""></input>
+
+                                       </form>
+                                        <a href="#" id="btnYes" class="btn danger">Yes</a>
+                                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+
+
+              </div>
+                </div>
+            <!-- /.modal-content -->
+          </div>
+              <!-- /.modal-dialog -->
+            </div>
+      <!-- /.modal-delete-->
+
 <#-- Edit User Modal -->
 
     <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -227,6 +260,8 @@
                             <input type="hidden" id="id" name="id"/>
                             <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name">
                         </div>
+
+
                         <div class="form-group">
                             <input type="text" class="form-control input-lg" id="surname" name="surname"
                                    placeholder="Last Name">
@@ -263,5 +298,9 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editown.js'/>"></script>
 <script src="<@spring.url '/js/addveh.js'/>"></script>
+<script src="<@spring.url '/js/delete.js'/>"></script>
+
+
+
 
 </@c.page>

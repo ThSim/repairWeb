@@ -15,6 +15,8 @@ public interface UserService {
 
     User findByMail(String mail);
 
+    void delete(Long id);
+
     User findByAfm(String afm);
 
     User findById(Long id);

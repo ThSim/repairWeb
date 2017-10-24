@@ -20,6 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByMailAndPass(String username, String pass);
 
     User save(User user);
+    void delete(Long id);
 
     List<User> findTop50BySurnameAfterOrderBySurname(String surname);
 

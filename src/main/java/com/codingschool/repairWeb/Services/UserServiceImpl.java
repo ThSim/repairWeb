@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void delete(Long id) {
+        userRepository.delete(id);
+    }
+
+    @Override
     public User login(String mail, String pass) {
         User user = userRepository.findByMailAndPass(mail, pass);
         if (user == null) {
