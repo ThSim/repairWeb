@@ -4,8 +4,6 @@ package com.codingschool.repairWeb.Controllers.OwnerControllers;
 import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,26 +21,25 @@ public class OwnerHomeController {
     private static final String FULL_NAME = "fullName";
     private static final String REPAIR_LIST = "repairList";
 
-    @RequestMapping(value = "/user",  method = RequestMethod.GET)
-    public String admin(Model model,HttpSession session) {
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String admin(Model model, HttpSession session) {
 
         List<Repair> repairs = userService.fetchRepairs();
-        model.addAttribute(REPAIR_LIST,repairs);
-
+        model.addAttribute(REPAIR_LIST, repairs);
 
         addFullNameInModel(session, model);
 
         return "user";
     }
 
-    private void addFullNameInModel(HttpSession session, Model model){
-        if(session.getAttribute("fullName")!=null)
+    private void addFullNameInModel(HttpSession session, Model model) {
+        if (session.getAttribute("fullName") != null)
             model.addAttribute(FULL_NAME, session.getAttribute("fullName"));
         else
             model.addAttribute(FULL_NAME, null);
     }
 
-    private void addUsernameInModel(Model model) {
+   /* private void addUsernameInModel(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             String username = (String) auth.getPrincipal();
@@ -51,5 +48,5 @@ public class OwnerHomeController {
             model.addAttribute("errorMessage", "User not logged in anymore!");
         }
 
-    }
+    }*/
 }
