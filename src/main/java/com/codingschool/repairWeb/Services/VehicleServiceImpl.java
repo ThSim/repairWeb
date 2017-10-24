@@ -45,4 +45,11 @@ public class VehicleServiceImpl implements VehicleService{
         if(vehicleRes == null)  throw new NoResultsFoundException("No vehicle found matching your criteria");
         else return vehicleRes;
     }
+
+    @Override
+    public List<Vehicle> findOwnersVehicles(Long id) throws NoResultsFoundException {
+        List<Vehicle> res = vehicleRepository.findByUser_Id(id);
+        if(res.isEmpty()) throw new NoResultsFoundException("This User has no vehicles");
+        else return res;
+    }
 }

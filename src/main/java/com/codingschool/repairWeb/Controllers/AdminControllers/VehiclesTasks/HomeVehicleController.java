@@ -22,7 +22,7 @@ public class HomeVehicleController {
     private static final String SEARCH_FORM = "searchForm";
     private static final String ADD_REPAIR_FORM = "addRepairForm";
     private static final String VEHICLES_LIST = "vehiclesList";
-    private static final String PROFILE_DES="profile";
+    private static final String PROFILE_DES = "profile";
     private static final String ERROR = "errorMessage";
 
     @Autowired
@@ -43,9 +43,9 @@ public class HomeVehicleController {
             } else result.addAll(resultList);
         }
 
-        model.addAttribute(VEHICLES_LIST,result);
-        model.addAttribute(ERROR,errorMessage);
-        model.addAttribute(PROFILE_DES,"/admin");
+        model.addAttribute(VEHICLES_LIST, result);
+        model.addAttribute(ERROR, errorMessage);
+        model.addAttribute(PROFILE_DES, "/admin");
         return "admin/vehicles";
     }
 

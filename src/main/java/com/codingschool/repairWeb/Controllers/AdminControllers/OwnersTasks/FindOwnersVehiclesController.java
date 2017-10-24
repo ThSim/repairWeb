@@ -1,11 +1,12 @@
 package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 
-//here we get the search value and return the result as a list to home controller
-
 import com.codingschool.repairWeb.Domain.User;
+import com.codingschool.repairWeb.Domain.Vehicle;
 import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
+import com.codingschool.repairWeb.Model.IdForm;
 import com.codingschool.repairWeb.Model.SearchForm;
 import com.codingschool.repairWeb.Services.UserService;
+import com.codingschool.repairWeb.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,29 +18,29 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Controller
-public class SearchOwnerController {
+public class FindOwnersVehiclesController {
 
-    private static final String SEARCH_FORM = "searchForm";
+    private static final String ID_FORM = "idForm";
 
     @Autowired
-    private UserService userService;
+    private VehicleService vehicleService;
 
-    @RequestMapping(value = "/admin/owners/search", method = RequestMethod.POST)
-    public String searchOwner(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
-                        RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/admin/owners/findVehicles", method = RequestMethod.POST)
+    public String searchOwner(@ModelAttribute(ID_FORM) IdForm idForm,
+                              RedirectAttributes redirectAttributes) {
 
         //Initialize results list
-        List<User> result = new LinkedList<>();
-        //Call Search method
+        List<Vehicle> result = new LinkedList<>();
+
         try {
-            result.add(userService.searchOwner(searchForm.getWhatToSearch(), searchForm.getSearch()));
+            //Here we are searching for the vehicle:
+            result = vehicleService.findOwnersVehicles(idForm.getId());
             //add result list to attributes
             redirectAttributes.addFlashAttribute("resultList", result);
         } catch (NoResultsFoundException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
 
-        return "redirect:/admin/owners";
+        return "redirect:/admin/vehicles";
     }
-
 }

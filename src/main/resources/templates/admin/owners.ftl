@@ -24,6 +24,12 @@
         </div>
     </form>
 
+    <form style="display:none" class="findVehicles" name="idForm" action="owners/findVehicles" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="hidden" name="id" id="id"/>
+            <input type="submit" value="Search">
+    </form>
+
     <p><a href="#" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary btn-lg" role="button">Add
         User</a></p>
 
@@ -47,7 +53,6 @@
 
                                 <table id="mytable" class="table table-striped">
                                     <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
-
                                     <th style="display:none;">Id</th>
                                     <th>Name</th>
                                     <th>Last Name</th>
@@ -64,13 +69,13 @@
                                     <tbody>
                                         <#list ownersList as owner>
                                         <tr>
-                                            <td style="display:none;" class="id">${owner.id}</td>
-                                            <td class="name">${owner.name}</td>
-                                            <td class="surname">${owner.surname}</td>
-                                            <td class="afm">${owner.afm}</td>
-                                            <td class="mail">${owner.mail}</td>
-                                            <td class="address">${owner.address}</td>
-                                            <td class="password">${owner.pass}</td>
+                                            <td style="display:none;" class="id goToVehicles">${owner.id}</td>
+                                            <td class="name goToVehicles">${owner.name}</td>
+                                            <td class="surname goToVehicles">${owner.surname}</td>
+                                            <td class="afm goToVehicles">${owner.afm}</td>
+                                            <td class="mail goToVehicles">${owner.mail}</td>
+                                            <td class="address goToVehicles">${owner.address}</td>
+                                            <td class="password goToVehicles">${owner.pass}</td>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
                                                     <button id="edit" class="editb btn btn-primary btn-xs"
@@ -309,8 +314,6 @@
 <script src="<@spring.url '/js/editown.js'/>"></script>
 <script src="<@spring.url '/js/addveh.js'/>"></script>
 <script src="<@spring.url '/js/delete.js'/>"></script>
-
-
-
+<script src="<@spring.url '/js/goToVehicles.js'/>"></script>
 
 </@c.page>
