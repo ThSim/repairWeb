@@ -3,6 +3,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
 //here we get the search value and return the result as a list to home controller
 
 import com.codingschool.repairWeb.Domain.User;
+import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Model.SearchForm;
 import com.codingschool.repairWeb.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,27 +27,18 @@ public class SearchOwnerController {
 
     @RequestMapping(value = "/admin/owners/search", method = RequestMethod.POST)
     public String searchOwner(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
-                        HttpSession session,
                         RedirectAttributes redirectAttributes) {
 
         //Initialize results list
         List<User> result = new LinkedList<>();
-
-        //Here we are searching for the owner:
-        if (searchForm.getWhatToSearch().equals("afm")){
-            //search by afm
-            result.add(userService.findByAfm(searchForm.getSearch()));
-
-        }else if(searchForm.getWhatToSearch().equals("mail")){
-            //search by mail
-            result.add(userService.findByMail(searchForm.getSearch()));
-
-        }else{
-            //throw some error
+        //Call Search method
+        try {
+            result.add(userService.searchOwner(searchForm.getWhatToSearch(), searchForm.getSearch()));
+            //add result list to attributes
+            redirectAttributes.addFlashAttribute("resultList", result);
+        } catch (NoResultsFoundException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
-
-        //add result list to attributes
-        redirectAttributes.addFlashAttribute("resultList", result);
 
         return "redirect:/admin/owners";
     }

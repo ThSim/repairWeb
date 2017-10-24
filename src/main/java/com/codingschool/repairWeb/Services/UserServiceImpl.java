@@ -4,6 +4,7 @@ import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Domain.Vehicle;
 import com.codingschool.repairWeb.Exceptions.InvalidCredentialsException;
+import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -78,6 +79,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> find50UsersWithSurnameAfter(String surname) {
         return userRepository.findTop50BySurnameAfterOrderBySurname(surname);
+    }
+
+    @Override
+    public User searchOwner(String whatToSearch, String search) throws NoResultsFoundException {
+        //Here we are searching for the owner:
+        User userRes;
+        if (whatToSearch.equals("afm")){
+            //search by afm
+            userRes = userRepository.findByAfm(search);
+
+        }else if(whatToSearch.equals("mail")){
+            //search by mail
+            userRes = userRepository.findByMail(search);
+
+        }else{
+            throw new NoResultsFoundException("I think you messed up with HTML...");
+        }
+        if(userRes==null) throw new NoResultsFoundException("No user found matching your criteria");
+        else return userRes;
     }
 
 

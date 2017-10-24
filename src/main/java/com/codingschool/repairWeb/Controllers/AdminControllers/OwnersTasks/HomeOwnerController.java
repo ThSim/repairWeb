@@ -21,28 +21,30 @@ public class HomeOwnerController {
     private static final String SEARCH_FORM = "searchForm";
     private static final String OWNERS_LIST = "ownersList";
     private static final String PROFILE_DES = "profile";
+    private static final String ERROR = "errorMessage";
 
     @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/admin/owners", method = RequestMethod.GET)
-    public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<User> resultList ) {
-        model.addAttribute(SEARCH_FORM, new OwnerForm() );
+    public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<User> resultList, @ModelAttribute("errorMessage") String errorMessage) {
+        model.addAttribute(SEARCH_FORM, new OwnerForm());
 
         List<User> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search
-        if (resultList.isEmpty()){
-            //Get Owners from database
-            result.addAll(userService.find50UsersWithSurnameAfter("A"));
-        }
-        else{
-            result.addAll(resultList);
+
+        if (errorMessage.isEmpty()) {
+            if (resultList.isEmpty()) {
+                //Get Owners from database
+                result.addAll(userService.find50UsersWithSurnameAfter("A"));
+            } else result.addAll(resultList);
         }
 
         //Edw tha steiloume mprosta kai mia lista me apotelesmata owners
         //Either from database alphabetically or a search result
-        model.addAttribute(OWNERS_LIST,result);
-        model.addAttribute(PROFILE_DES,"/admin");
+        model.addAttribute(OWNERS_LIST, result);
+        model.addAttribute(ERROR,errorMessage);
+        model.addAttribute(PROFILE_DES, "/admin");
         return "admin/owners";
     }
 

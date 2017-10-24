@@ -1,6 +1,7 @@
 package com.codingschool.repairWeb.Controllers.AdminControllers.VehiclesTasks;
 
 import com.codingschool.repairWeb.Domain.Vehicle;
+import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Model.SearchVehicleForm;
 import com.codingschool.repairWeb.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,14 @@ public class SearchVehicleController {
         //Initialize results list
         List<Vehicle> result = new LinkedList<>();
 
-        //Here we are searching for the vehicle:
-        result.add(vehicleService.findByPlate(searchVehicleForm.getPlate()));
-
-        //add result list to attributes
-        redirectAttributes.addFlashAttribute("resultList", result);
+        try {
+            //Here we are searching for the vehicle:
+            result.add(vehicleService.searchVehicle(searchVehicleForm.getPlate()));
+            //add result list to attributes
+            redirectAttributes.addFlashAttribute("resultList", result);
+        } catch (NoResultsFoundException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
 
         return "redirect:/admin/vehicles";
     }

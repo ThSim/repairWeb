@@ -3,7 +3,6 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.RepairTasks;
 //Here we will display the repairs and display a search box for them
 
 import com.codingschool.repairWeb.Domain.Repair;
-import com.codingschool.repairWeb.Model.RepairForm;
 import com.codingschool.repairWeb.Model.SearchRepairsForm;
 import com.codingschool.repairWeb.Services.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class HomeRepairController {
         //Get attributes and check if there is a result from a search
         if(errorMessage.isEmpty()){
             if (resultList.isEmpty()){
-                //Get Owners from database
+                //Get Repairs from database
                 result.addAll(repairService.find50Repairs());
             }
             else result.addAll(resultList);
