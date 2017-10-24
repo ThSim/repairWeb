@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class AddVehicleController {
@@ -43,6 +45,13 @@ public class AddVehicleController {
         Vehicle veh = new Vehicle(vehicleForm.getPlate(), vehicleForm.getBrand(), vehicleForm.getColor(), userToAdd);
 
         vehicleService.save(veh);
+        List<Vehicle> result = new LinkedList<>();
+
+
+        result.add(vehicleService.findByPlate(vehicleForm.getPlate()));
+
+
+        redirectAttributes.addFlashAttribute("resultList",result);
 
         return "redirect:/admin/vehicles";
     }
