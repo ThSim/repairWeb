@@ -33,12 +33,12 @@ public class HomeRepairController {
 
         List<Repair> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search
-        if (resultList.isEmpty()){
-            //Get Owners from database
-            result.addAll(repairService.find50Repairs());
-        }
-        else{
-            if(errorMessage==null) result.addAll(resultList);
+        if(errorMessage.isEmpty()){
+            if (resultList.isEmpty()){
+                //Get Owners from database
+                result.addAll(repairService.find50Repairs());
+            }
+            else result.addAll(resultList);
         }
 
         //Edw tha steiloume mprosta kai mia lista me apotelesmata repairs

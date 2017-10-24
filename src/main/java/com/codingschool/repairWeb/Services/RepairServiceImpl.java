@@ -40,9 +40,9 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> searchRepairsDates(String dateStart, String dateEnd) throws NoResultsFoundException {
-        List<Repair> result = new LinkedList<>();
-        result = repairRepository.findByDateTimeBetween(DateParser.dateFromPicker(dateStart), DateParser.dateFromPicker(dateEnd));
-        if(result==null) throw new NoResultsFoundException("No repairs have found in this period");
+        List<Repair> result;
+        result = repairRepository.findByDateTimeAfterAndDateTimeBefore(DateParser.dateFromPicker(dateStart), DateParser.dateFromPicker(dateEnd));
+        if(result.isEmpty()) throw new NoResultsFoundException("No repairs have found in this period");
         return result;
     }
 
