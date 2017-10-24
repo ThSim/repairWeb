@@ -63,10 +63,10 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                            <p data-placement="top" data-toggle="tooltip" title="Add">
                                                 <button id="edit" class="plub btn btn-warning btn-xs" data-title="Add"
                                                         data-toggle="modal"
-                                                        data-target="#add"><span
+                                                        data-target="#addRepairModal"><span
                                                         class="glyphicon glyphicon-plus"></span>
                                                 </button>
                                             </p>
@@ -101,6 +101,46 @@
 <#-- Add Repair Modal -->
 
 
+    <div id="addRepairModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="text-center">Add Repair</h2>
+                </div>
+                <div class="modal-body row">
+                    <div class="text-center">
+                        <h4 class="text-danger">${errorMsg!""}</h4>
+                    </div>
+                    <form id="editVehicleForm" name="editVehicleForm" action="repaires/add"
+                          class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
+
+                        <div class="form-group">
+                            <!--{% csrf_token %}-->
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input type="hidden" id="id" name="id"/>
+                            <input type="text" class="form-control input-lg" id="datetime" name="datetime"
+                                   placeholder="Datetime">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="status" name="status"
+                                   placeholder="Status">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="price" name="price"
+                                   placeholder="Price">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
