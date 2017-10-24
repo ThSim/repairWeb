@@ -113,7 +113,7 @@
                     <div class="text-center">
                         <h4 class="text-danger">${errorMsg!""}</h4>
                     </div>
-                    <form id="editVehicleForm" name="editVehicleForm" action="repaires/add"
+                    <form id="addRepairForm" name="editVehicleForm" action="/admin/repairs/add"
                           class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                         <div class="form-group">
@@ -122,13 +122,13 @@
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" id="id" name="id"/>
 
-                            <input type="text" class="form-control input-lg" id="datepicker" name="datetime"
+                            <input type="text" class="form-control input-lg" id="dateTime" name="dateTime"
                                    placeholder="Datetime">
 
 
                         </div>
                         <div class="form-group">
-                            <select required class="form-control input-lg">
+                            <select name = "status" id="status" required class="form-control input-lg">
                                 <option value = "" disabled selected hidden>Status</option>
                                 <option value = "pending">Pending</option>
                                 <option value = "onTheWay">On the way</option>
@@ -203,13 +203,14 @@
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editveh.js'/>"></script>
+<script src="<@spring.url '/js/addrep.js'/>"></script>
 
 <link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
 <script src="<@spring.url '/js/date/moment.min.js'/>"></script>
 <script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
 <script type="text/javascript">
     $(function () {
-        $('#datepicker').datetimepicker();
+        $('#dateTime').datetimepicker();
     });
 </script>
 

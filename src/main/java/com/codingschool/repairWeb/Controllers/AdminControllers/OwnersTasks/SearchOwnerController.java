@@ -25,7 +25,7 @@ public class SearchOwnerController {
     private UserService userService;
 
     @RequestMapping(value = "/admin/owners/search", method = RequestMethod.POST)
-    public String doAdd(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
+    public String searchOwner(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
 

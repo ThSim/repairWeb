@@ -1,13 +1,11 @@
 package com.codingschool.repairWeb.Model;
 
-import java.time.LocalDateTime;
-
 public class RepairForm {
 
     private Long id;
-    private LocalDateTime dateTime;
+    private String dateTime;
     private String status;
-    private String price;
+    private double price;
 
     public Long getId() {
         return id;
@@ -15,14 +13,6 @@ public class RepairForm {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public String getStatus() {
@@ -33,11 +23,19 @@ public class RepairForm {
         this.status = status;
     }
 
-    public String getPrice() {
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

@@ -3,6 +3,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.VehiclesTasks;
 //Here we will display the vehicles and display a search box for them
 
 import com.codingschool.repairWeb.Domain.Vehicle;
+import com.codingschool.repairWeb.Model.RepairForm;
 import com.codingschool.repairWeb.Model.SearchVehicleForm;
 import com.codingschool.repairWeb.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.List;
 public class HomeVehicleController {
 
     private static final String SEARCH_FORM = "searchForm";
+    private static final String ADD_REPAIR_FORM = "addRepairForm";
     private static final String VEHICLES_LIST = "vehiclesList";
     private static final String PROFILE_DES="profile";
 
@@ -29,6 +31,7 @@ public class HomeVehicleController {
     @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
     public String getAddView(Model model, @ModelAttribute("resultList") LinkedList<Vehicle> resultList ) {
         model.addAttribute(SEARCH_FORM, new SearchVehicleForm());
+        model.addAttribute(ADD_REPAIR_FORM, new RepairForm());
 
         List<Vehicle> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search

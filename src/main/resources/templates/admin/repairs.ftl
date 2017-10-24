@@ -10,10 +10,11 @@
     <div class="boardmsg">
         <h3> Search For a Vehicle</h3>
     </div>
-    <form name="searchRepairForm" action="repairs/search" method="post">
+    <form name="searchRepairsForm" action="repairs/search" method="post">
         <div class="hello">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="text" name="date" placeholder="Date"/>
+            <input type="text" id = "dateStart" name="dateStart" placeholder="Date Start"/>
+            <input type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
             <input type="submit" value="Search">
         </div>
     </form>
@@ -110,5 +111,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
+
+<link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
+<script src="<@spring.url '/js/date/moment.min.js'/>"></script>
+<script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#dateStart').datetimepicker();
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#dateEnd').datetimepicker();
+    });
+</script>
 
 </@c.page>

@@ -14,5 +14,5 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     List<Repair> findTop50ByDateTimeAfterOrderByDateTimeAsc(LocalDateTime StartDate);
     //or Desc
-    List<Repair> findByDateTimeBefore(LocalDateTime StartDate);
+    List<Repair> findByDateTimeBetween(LocalDateTime dateStart, LocalDateTime dateEnd);
 }

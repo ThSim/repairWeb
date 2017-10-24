@@ -4,6 +4,7 @@ package com.codingschool.repairWeb.Controllers.AdminControllers.RepairTasks;
 
 import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Model.RepairForm;
+import com.codingschool.repairWeb.Model.SearchRepairsForm;
 import com.codingschool.repairWeb.Services.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,14 @@ public class HomeRepairController {
     @Autowired
     private RepairService repairService;
 
-    private static final String SEARCH_FORM = "searchForm";
+    private static final String SEARCH_FORM = "searchRepairsForm";
     private static final String REPAIRS_LIST = "repairList";
     private static final String PROFILE_DES="profile";
+    private static final String ERROR = "errorMessage";
 
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
-    public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<Repair> resultList ) {
-        model.addAttribute(SEARCH_FORM, new RepairForm() );
+    public String homeOnwersView(Model model, @ModelAttribute("resultList") LinkedList<Repair> resultList, @ModelAttribute("errorMessage") String errorMessage ) {
+        model.addAttribute(SEARCH_FORM, new SearchRepairsForm());
 
         List<Repair> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search
@@ -36,11 +38,12 @@ public class HomeRepairController {
             result.addAll(repairService.find50Repairs());
         }
         else{
-            result.addAll(resultList);
+            if(errorMessage==null) result.addAll(resultList);
         }
 
         //Edw tha steiloume mprosta kai mia lista me apotelesmata repairs
         model.addAttribute(REPAIRS_LIST,result);
+        model.addAttribute(ERROR,errorMessage);
         model.addAttribute(PROFILE_DES,"/admin");
         return "admin/repairs";
     }
