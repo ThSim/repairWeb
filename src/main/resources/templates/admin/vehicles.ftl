@@ -126,7 +126,6 @@
                                    placeholder="Datetime">
 
 
-
                         </div>
                         <div class="form-group">
                             <select required class="form-control input-lg">
@@ -205,9 +204,13 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editveh.js'/>"></script>
 
-<script>
-    $( function() {
-        $( "#datepicker" ).datepicker();
-    } );
+<link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
+<script src="<@spring.url '/js/date/moment.min.js'/>"></script>
+<script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#datepicker').datetimepicker();
+    });
 </script>
+
 </@c.page>
