@@ -20,6 +20,11 @@ a:hover{
   color:#1b1919;
 }
 
+.hovered{
+  color: #918fd6;
+  cursor: pointer;
+}
+
 .btn, .well, .panel{
 }
 

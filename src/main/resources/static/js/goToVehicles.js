@@ -3,3 +3,6 @@ jQuery('.goToVehicles').on('click', function() {
     $(".findVehicles #id").val(  $('.id', $tr).text() );
     $( ".findVehicles" ).submit();
 });
+
+jQuery('.goToVehicles').on('mouseenter', function(){ $(this).parent().addClass('hovered'); })
+    .on('mouseleave', function(){ $(this).parent().removeClass('hovered'); });

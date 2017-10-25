@@ -48,6 +48,7 @@ public class HomeOwnerController {
         model.addAttribute(OWNERS_LIST, result);
         model.addAttribute(ERROR, errorMessage);
         model.addAttribute(PROFILE_DES, "/admin");
+        model.addAttribute("errorMsg","");
         return "admin/owners";
     }
 

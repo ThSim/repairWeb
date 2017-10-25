@@ -69,6 +69,7 @@
                                     <tbody>
                                         <#list ownersList as owner>
                                         <tr>
+                                            <a href="#">
                                             <td style="display:none;" class="id goToVehicles">${owner.id}</td>
                                             <td class="name goToVehicles">${owner.name}</td>
                                             <td class="surname goToVehicles">${owner.surname}</td>
@@ -76,6 +77,7 @@
                                             <td class="mail goToVehicles">${owner.mail}</td>
                                             <td class="address goToVehicles">${owner.address}</td>
                                             <td class="password goToVehicles">${owner.pass}</td>
+                                            </a>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
                                                     <button id="edit" class="editb btn btn-primary btn-xs"

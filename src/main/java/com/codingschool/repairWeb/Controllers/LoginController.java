@@ -28,6 +28,7 @@ public class LoginController {
 
         if (error != null) {
             model.addAttribute(ERROR_MSG, session.getAttribute(ERROR_MSG));
+            session.removeAttribute(ERROR_MSG);
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
