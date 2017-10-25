@@ -44,7 +44,7 @@
                                 <tbody>
                                     <#list repairList as repair>
                                     <tr>
-                                        <td style="display:none;" class="id">${repair.id}</td>
+                                       <a href="#" style="display:block"> <td style="display:none;" class="id">${repair.id}</td></a>
                                         <td class="datetime">${repair.dateTime}</td>
                                         <td class="status">${repair.status}</td>
                                         <td class="price">${repair.price}</td>
@@ -80,11 +80,19 @@
                                                 </button>
                                             </p>
                                         </td>
+
                                     </tr>
                                     </#list>
+
                                 </tbody>
 
                             </table>
+                            <form id="loadMoreForm" action="/load" style="display:none">
+                            <input id="tok" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input id="repairDateTime"  name="dateTime" value=""/>
+
+                             </form>
+                              <button class="btn btn-primary" id="load">load more...</button>
                         </div>
                     <#else>
                         <h2> No Repairs have found for the next days</h2>
@@ -104,6 +112,9 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
+<script src="<@spring.url '/js/load_more.js'/>"></script>
+<script >
+</script>
 
 
 </@c.page>

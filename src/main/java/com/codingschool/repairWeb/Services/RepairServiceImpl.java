@@ -37,6 +37,11 @@ public class RepairServiceImpl implements RepairService{
         LocalDateTime localDateTime = LocalDateTime.now();
         return repairRepository.findTop50ByDateTimeAfterOrderByDateTimeAsc(localDateTime);
     }
+    @Override
+    public List<Repair> find10RepairsAfter(LocalDateTime localDateTime) {
+
+        return repairRepository.findTop10ByDateTimeAfterOrderByDateTimeAsc(localDateTime);
+    }
 
     @Override
     public List<Repair> searchRepairsDates(String dateStart, String dateEnd) throws NoResultsFoundException {

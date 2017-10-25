@@ -3,6 +3,7 @@ package com.codingschool.repairWeb.Services;
 import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RepairService {
@@ -13,4 +14,6 @@ public interface RepairService {
     List<Repair> find50Repairs();
 
     List<Repair> searchRepairsDates(String dateStart, String dateEnd) throws NoResultsFoundException;
+//???
+    List<Repair> find10RepairsAfter(LocalDateTime localDateTime);
 }

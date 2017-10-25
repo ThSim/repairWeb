@@ -30,7 +30,7 @@
             <input type="submit" value="Search">
     </form>
 
-    <p><a href="#" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary btn-lg" role="button">Add
+    <p><a href="#" id="addUserButton" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary btn-lg" role="button">Add
         User</a></p>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -173,7 +173,6 @@
 </div>
 
 
-
 <#-- Add User Modal -->
 <div id="addUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="false">
@@ -187,43 +186,49 @@
                 <div class="text-center">
                     <h4 class="text-danger">${errorMsg!""}</h4>
                 </div>
+                </form>
                 <form id="addUserForm" name="addUserForm" action="owners/add"
                       class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
-                    <div class="form-group">
-                        <!--{% csrf_token %}-->
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="surname" name="surname"
-                               placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="pass" name="pass"
-                               placeholder="Password">
-                    </div>
+                        <div class="form-group">
+                            <!--{% csrf_token %}-->
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name"  data-error="Insert a name" required>
+                             <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="surname" name="surname"
+                                   placeholder="Last Name" data-error="Insert a surname" required>
+                                    <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail" data-error="Insert a valid email" required >
+                             <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" id="pass" name="pass"
+                                   placeholder="Password"  data-error="Insert a Password" required  >
+                                   <div class="help-block with-errors"></div>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="afm" name="afm" placeholder="AFM">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="address" name="address"
-                               placeholder="Address">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <input type="text" pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm" data-error="Insert a valid afm " placeholder="AFM" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="address" name="address"
+                                   placeholder="Address"  data-error="Insert an address " required >
+                                   <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        </div>
+                    </form>
 
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- /.modal-delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
@@ -258,53 +263,58 @@
 <!-- /.modal-delete-->
 
 <#-- Edit User Modal -->
-
-<div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="text-center">Edit User</h2>
-            </div>
-            <div class="modal-body row">
-                <div class="text-center">
-                    <h4 class="text-danger">${errorMsg!""}</h4>
+    <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="text-center">Edit User</h2>
                 </div>
-                <form id="editUserForm" name="editUserForm" action="owners/edit"
-                      class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
+                <div class="modal-body row">
+                    <div class="text-center">
+                        <h4 class="text-danger">${errorMsg!""}</h4>
+                    </div>
+                    <form id="editUserForm" name="editUserForm" action="owners/edit" data-toggle="validator"
+                          class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
-                    <div class="form-group">
-                        <!--{% csrf_token %}-->
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="hidden" id="id" name="id"/>
-                        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name">
-                    </div>
+                        <div class="form-group">
+                            <!--{% csrf_token %}-->
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <input type="hidden" id="id" name="id"/>
+                            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name" data-error="Insert a name" required>
+                             <div class="help-block with-errors"></div>
+                        </div>
 
 
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="surname" name="surname"
-                               placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail">
-                    </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="surname" name="surname" data-error="Insert a Surname"
+                                   placeholder="Last Name" required>
+                                    <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail" data-error="Insert a valid email" required>
+                         <div class="help-block with-errors"></div>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="afm" name="afm" placeholder="AFM">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="address" name="address"
-                               placeholder="Address">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <input type="text"  pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm" placeholder="AFM" data-error="Insert a valid AFM" required>
+                             <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" id="address" name="address"
+                                   placeholder="Address" data-error="Insert an address" required>
+                                    <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        </div>
+                    </form>
 
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!--scripts loaded here-->
@@ -317,5 +327,7 @@
 <script src="<@spring.url '/js/addveh.js'/>"></script>
 <script src="<@spring.url '/js/delete.js'/>"></script>
 <script src="<@spring.url '/js/goToVehicles.js'/>"></script>
+<script src="<@spring.url '/js/validator.js'/>"></script>
+<script src="<@spring.url '/js/validation_custom.js'/>"></script>
 
 </@c.page>
