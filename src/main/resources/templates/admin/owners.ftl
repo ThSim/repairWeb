@@ -1,6 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<html>
-<body>
 <#import "/template.ftl" as c/>
 <@c.page title="Admin">
 <!-- custom page content -->
