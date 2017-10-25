@@ -22,31 +22,30 @@ public class HomeVehicleController {
     private static final String SEARCH_FORM = "searchForm";
     private static final String ADD_REPAIR_FORM = "addRepairForm";
     private static final String VEHICLES_LIST = "vehiclesList";
-    private static final String PROFILE_DES="profile";
+    private static final String PROFILE_DES = "profile";
+    private static final String ERROR = "errorMessage";
 
     @Autowired
     private VehicleService vehicleService;
 
 
     @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
-    public String getAddView(Model model, @ModelAttribute("resultList") LinkedList<Vehicle> resultList ) {
+    public String getAddView(Model model, @ModelAttribute("resultList") LinkedList<Vehicle> resultList, @ModelAttribute("errorMessage") String errorMessage) {
         model.addAttribute(SEARCH_FORM, new SearchVehicleForm());
         model.addAttribute(ADD_REPAIR_FORM, new RepairForm());
 
         List<Vehicle> result = new LinkedList<>();
         //Get attributes and check if there is a result from a search
-        if (resultList.isEmpty()){
-            //Get Owners from database
-            result.addAll(vehicleService.find50VehiclesWithPlateAfter("A"));
-        }
-        else{
-            result.addAll(resultList);
+        if (errorMessage.isEmpty()) {
+            if (resultList.isEmpty()) {
+                //Get Owners from database
+                result.addAll(vehicleService.find50VehiclesWithPlateAfter("A"));
+            } else result.addAll(resultList);
         }
 
-        //Edw tha steiloume mprosta kai mia lista me apotelesmata owners
-        //Either from database alphabetically or a search result
-        model.addAttribute(VEHICLES_LIST,result);
-        model.addAttribute(PROFILE_DES,"/admin");
+        model.addAttribute(VEHICLES_LIST, result);
+        model.addAttribute(ERROR, errorMessage);
+        model.addAttribute(PROFILE_DES, "/admin");
         return "admin/vehicles";
     }
 

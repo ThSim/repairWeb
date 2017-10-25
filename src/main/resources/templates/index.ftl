@@ -168,16 +168,20 @@
                 <div class="text-center">
                     <h4 class="text-danger">${errorMsg!""}</h4>
                 </div>
-                <form id="loginForm" name="loginForm" action="/"
+                <form id="loginForm" name="loginForm"  action="/"
                       class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                     <div class="form-group">
                         <!--{% csrf_token %}-->
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="text" class="form-control input-lg" name="email" placeholder="E-Mail">
+                        <input type="text" class="form-control input-lg" name="email" placeholder="E-Mail" data-error="" >
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" name="pass" placeholder="Password">
+                        <input type="password" data-minlength="6"  class="form-control input-lg" name="pass" data-error="unvalid" placeholder="Password" >
+                          <div class="help-block with-errors"> </div>
+
+
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-danger btn-lg btn-block">Sign In</button>
@@ -194,9 +198,14 @@
 <!--scripts loaded here-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/validator.js"></script>
+
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
+
+
 
 <script>
         <#if !flag>

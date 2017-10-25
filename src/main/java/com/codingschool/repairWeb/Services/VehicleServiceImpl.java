@@ -1,6 +1,7 @@
 package com.codingschool.repairWeb.Services;
 
 import com.codingschool.repairWeb.Domain.Vehicle;
+import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,19 @@ public class VehicleServiceImpl implements VehicleService{
     public Vehicle findById(Long id) {
         Vehicle veh = vehicleRepository.findById(id);
         return veh;
+    }
+
+    @Override
+    public Vehicle searchVehicle(String plate) throws NoResultsFoundException {
+        Vehicle vehicleRes = vehicleRepository.findByPlate(plate);
+        if(vehicleRes == null)  throw new NoResultsFoundException("No vehicle found matching your criteria");
+        else return vehicleRes;
+    }
+
+    @Override
+    public List<Vehicle> findOwnersVehicles(Long id) throws NoResultsFoundException {
+        List<Vehicle> res = vehicleRepository.findByUser_Id(id);
+        if(res.isEmpty()) throw new NoResultsFoundException("This User has no vehicles");
+        else return res;
     }
 }

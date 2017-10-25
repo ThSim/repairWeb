@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-$("#delete").click(function(){
+$('.delb').click(function(){
 //text of element(td) with class="id"
 var el = $(this).closest("tr").find(".id").text();
 console.log("el value id"+id)
