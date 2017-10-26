@@ -22,4 +22,6 @@ public interface RepairService {
     List<Repair> find10RepairsAfter(LocalDateTime localDateTime);
 
     Repair findById (Long id);
+
+    List<Repair> findVehiclesRepairs(Long id) throws NoResultsFoundException;
 }

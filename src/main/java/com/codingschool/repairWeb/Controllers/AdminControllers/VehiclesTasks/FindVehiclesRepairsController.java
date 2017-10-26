@@ -1,9 +1,9 @@
-package com.codingschool.repairWeb.Controllers.AdminControllers.OwnersTasks;
+package com.codingschool.repairWeb.Controllers.AdminControllers.VehiclesTasks;
 
-import com.codingschool.repairWeb.Domain.Vehicle;
+import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Model.IdForm;
-import com.codingschool.repairWeb.Services.VehicleService;
+import com.codingschool.repairWeb.Services.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,29 +15,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Controller
-public class FindOwnersVehiclesController {
+public class FindVehiclesRepairsController {
 
     private static final String ID_FORM = "idForm";
 
     @Autowired
-    private VehicleService vehicleService;
+    private RepairService repairService;
 
-    @RequestMapping(value = "/admin/owners/findVehicles", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/vehicles/findRepairs", method = RequestMethod.POST)
     public String searchOwner(@ModelAttribute(ID_FORM) IdForm idForm,
                               RedirectAttributes redirectAttributes) {
 
         //Initialize results list
-        List<Vehicle> result;
+        List<Repair> result;
 
         try {
-            //Here we are searching for the vehicle:
-            result = vehicleService.findOwnersVehicles(idForm.getId());
+            //Here we are searching for the reapirs:
+            result = repairService.findVehiclesRepairs(idForm.getId());
             //add result list to attributes
             redirectAttributes.addFlashAttribute("resultList", result);
         } catch (NoResultsFoundException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
 
-        return "redirect:/admin/vehicles";
+        return "redirect:/admin/repairs";
     }
+
 }

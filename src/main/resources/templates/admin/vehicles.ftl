@@ -23,6 +23,14 @@
         </div>
     </div><#-- end header_table_custom  -->
 
+    <#-- Hidden form to send user to repairs of a particular vehicle -->
+    <form style="display:none" class="findRepairs" name="idForm" action="vehicles/findRepairs"
+          method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="hidden" name="id" id="id"/>
+        <input type="submit" value="Search">
+    </form>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
@@ -57,12 +65,12 @@
                                     <tbody>
                                         <#list vehiclesList as vehicle>
                                         <tr>
-                                            <td class="id" style="display: none;">${vehicle.id}</td>
-                                            <td class="plate">${vehicle.plate}</td>
-                                            <td class="brand">${vehicle.brand}</td>
-                                            <td class="color">${vehicle.color}</td>
-                                            <td>${vehicle.user.afm}</td>
-                                            <td>${vehicle.user.surname}</td>
+                                            <td class="id goToRepairs" style="display: none;">${vehicle.id}</td>
+                                            <td class="plate goToRepairs">${vehicle.plate}</td>
+                                            <td class="brand goToRepairs">${vehicle.brand}</td>
+                                            <td class="color goToRepairs">${vehicle.color}</td>
+                                            <td class="goToRepairs">${vehicle.user.afm}</td>
+                                            <td class="goToRepairs">${vehicle.user.surname}</td>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
                                                     <button id="edit" class="editb btn btn-success btn-xs"
@@ -256,7 +264,7 @@
 <script src="<@spring.url '/js/editveh.js'/>"></script>
 
 <script src="<@spring.url '/js/deleteVehicle.js'/>"></script>
-
+<script src="<@spring.url '/js/goToRepairs.js'/>"></script>
 <script src="<@spring.url '/js/addrep.js'/>"></script>
 
 <link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">

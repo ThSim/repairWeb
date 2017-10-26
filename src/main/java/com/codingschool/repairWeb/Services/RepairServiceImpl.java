@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -35,8 +34,6 @@ public class RepairServiceImpl implements RepairService{
         return repairRepository.findTop10ByDateTimeAfterOrderByDateTimeAsc(localDateTime);
     }
 
-
-
     @Override
     public List<Repair> find50Repairs() {
         LocalDateTime localDateTime = LocalDateTime.now();
@@ -60,5 +57,12 @@ public class RepairServiceImpl implements RepairService{
     public Repair findById(Long id) {
             return repairRepository.findById(id);
         }
+
+    @Override
+    public List<Repair> findVehiclesRepairs(Long id) throws NoResultsFoundException {
+        List<Repair> res = repairRepository.findByVehicleId(id);
+        if(res.isEmpty()) throw new NoResultsFoundException("This Vehicle has no repairs");
+        else return res;
+    }
 
 }
