@@ -3,19 +3,25 @@
 <@c.page title="Admin">
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
-
-<div class="plaisio">
-    <div class="boardmsg">
-        <h3> Search For a Vehicle</h3>
-    </div>
-    <form name="searchForm" action="vehicles/search" method="post">
-        <div class="hello">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="text" name="plate" placeholder="Plate"/>
-            <input type="submit" value="Search">
+</br>
+<div class="plaisio container-fluid">
+    <div class="header_table_custom">
+        <div class="boardmsg">
+            <div class="row">
+                <div class="col-md-3">
+                    <form name="searchForm" action="vehicles/search" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <label> Search For a Vehicle</label>
+                        <input class="form-control" type="text" name="plate" placeholder="Plate"/>
+                </div><#--end col-->
+                <div class="col-md-2">
+                    <label></label>
+                    <input class="btn btn-md text-success" type="submit" value="Search">
+                </div>
+                </form>
+            </div><#--end row -->
         </div>
-    </form>
-
+    </div><#-- end header_table_custom  -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
@@ -59,7 +65,7 @@
                                             <td>${vehicle.user.surname}</td>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
-                                                    <button id="edit" class="editb btn btn-primary btn-xs"
+                                                    <button id="edit" class="editb btn btn-success btn-xs"
                                                             data-title="Edit"
                                                             data-toggle="modal"
                                                             data-target="#editVehicleModal"><span
@@ -183,19 +189,20 @@
                         <!--{% csrf_token %}-->
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" id="id" name="id"/>
-                        <input type="text" pattern="^[A-Z]{3}[-][0-9]{3}$" class="form-control input-lg" id="plate" name="plate"
+                        <input type="text" pattern="^[A-Z]{3}[-][0-9]{3}$" class="form-control input-lg" id="plate"
+                               name="plate"
                                placeholder="Plate" data-error="Insert a valid plate" required>
-                                <div class="help-block with-errors"></div>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" id="brand" name="brand"
                                placeholder="Brand" data-error="Insert a brand" required>
-                                 <div class="help-block with-errors"></div>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" id="color" name="color"
                                placeholder="Color" data-error="Insert a color" required>
-                                  <div class="help-block with-errors"></div>
+                        <div class="help-block with-errors"></div>
                     </div>
 
                     <div class="form-group">
@@ -207,7 +214,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!--Delete Modal -->
@@ -239,14 +245,6 @@
     </div>
 </div>
 <!-- /.modal-delete-->
-
-
-
-
-
-
-
-
 
 
 <!--scripts loaded here-->

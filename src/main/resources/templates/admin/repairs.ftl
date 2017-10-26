@@ -1,34 +1,34 @@
 <#import "/spring.ftl" as spring/>
-<html>
-<body>
 <#import "/template.ftl" as c/>
 <@c.page title="Admin">
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
-
+</br>
 <div class="plaisio container-fluid">
- <div class="header_table_custom">
-    <div class="boardmsg">
-        <h3> Search For a Vehicle</h3>
-    </div>
-    <form name="searchRepairsForm" action="repairs/search" method="post">
+    <div class="header_table_custom">
+        <div class="boardmsg">
+            <label>Search For a Repair</label>
+
             <div class="row">
-            <div class="col-md-3">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input class="form-control" type="text" id="dateStart" name="dateStart" placeholder="Date Start"/>
-                 </div><#--end col -->
-            <div class="col-md-3">
-            <input class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
-                 </div><#--end col -->
-            <div class="col-md-3">
-            <input type="submit" value="Search">
-
-            </div><#--end col -->
+                <div class="col-md-3">
+                    <form name="searchRepairsForm" action="repairs/search" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <label> Starting date</label>
+                        <input class="form-control" type="text" id="dateStart" name="dateStart"
+                               placeholder="Date Start"/>
+                </div><#--end col -->
+                <div class="col-md-3">
+                    <label> Ending date</label>
+                    <input class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
+                </div><#--end col -->
+                <div class="col-md-1">
+                    <input class="btn btn-md text-success" type="submit" value="Search">
+                </div><#--end col -->
+                </form>
             </div><#--end row -->
+        </div>
+    </div><#-- end header_table_custom  -->
 
-    </form>
-
-</div><#-- end header_table_custom  -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
@@ -57,53 +57,53 @@
                                     <th>Vehicle's Plate</th>
                                     <th>Vehicle's Owner</th>
 
-                                <th>Edit</th>
-                                <th>Add Parts</th>
-                                <th>Delete</th>
+                                    <th>Edit</th>
+                                    <th>Add Parts</th>
+                                    <th>Delete</th>
 
-                                </thead>
-                                <tbody>
-                                    <#list repairList as repair>
-                                    <tr>
-                                        <td style="display:none;" class="id">${repair.id}</td>
-                                        <td class="datetime">${repair.dateTime}</td>
-                                        <td class="status">${repair.status}</td>
-                                        <td class="price">${repair.price}</td>
-                                        <td class="plate">${repair.vehicle.plate}</td>
-                                        <td class="surname">${repair.vehicle.user.surname}</td>
-                                        <td>
-                                            <p data-placement="top" data-toggle="modal" title="Edit">
-                                                <button id="edit" class="editb btn btn-primary btn-xs"
-                                                        data-title="Edit"
-                                                        data-toggle="modal"
-                                                        data-target="#editRepairModal"><span
-                                                        class="glyphicon glyphicon-pencil"></span>
-                                                </button>
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Add">
-                                                <button id="addPart" class="plub btn btn-warning btn-xs"
-                                                        data-title="Add"
-                                                        data-toggle="modal"
-                                                        data-target="#addParts"><span
-                                                        class="glyphicon glyphicon-plus"></span>
-                                                </button>
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button id="delete" class="delb btn btn-danger btn-xs"
-                                                        data-title="Delete"
-                                                        data-toggle="modal"
-                                                        data-target="#deleteModal"><span
-                                                        class="glyphicon glyphicon-trash"></span>
-                                                </button>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    </#list>
-                                </tbody>
+                                    </thead>
+                                    <tbody>
+                                        <#list repairList as repair>
+                                        <tr>
+                                            <td style="display:none;" class="id">${repair.id}</td>
+                                            <td class="datetime">${repair.dateTime}</td>
+                                            <td class="status">${repair.status}</td>
+                                            <td class="price">${repair.price}</td>
+                                            <td class="plate">${repair.vehicle.plate}</td>
+                                            <td class="surname">${repair.vehicle.user.surname}</td>
+                                            <td>
+                                                <p data-placement="top" data-toggle="modal" title="Edit">
+                                                    <button id="edit" class="editb btn btn-success btn-xs"
+                                                            data-title="Edit"
+                                                            data-toggle="modal"
+                                                            data-target="#editRepairModal"><span
+                                                            class="glyphicon glyphicon-pencil"></span>
+                                                    </button>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p data-placement="top" data-toggle="tooltip" title="Add">
+                                                    <button id="addPart" class="plub btn btn-warning btn-xs"
+                                                            data-title="Add"
+                                                            data-toggle="modal"
+                                                            data-target="#addParts"><span
+                                                            class="glyphicon glyphicon-plus"></span>
+                                                    </button>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <button id="delete" class="delb btn btn-danger btn-xs"
+                                                            data-title="Delete"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteModal"><span
+                                                            class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        </#list>
+                                    </tbody>
 
                                 </table>
                             </div>
@@ -173,7 +173,6 @@
 </div>
 
 
-
 <!-- Add Parts Modal -->
 <div id="addParts" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="false">
@@ -241,7 +240,6 @@
     </div>
 </div>
 <!-- /.modal-delete-->
-
 
 
 <!--scripts loaded here-->

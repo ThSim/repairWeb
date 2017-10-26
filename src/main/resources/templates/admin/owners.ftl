@@ -4,50 +4,45 @@
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
 
+</br>
 <div class="plaisio container-fluid">
-   <div class="header_table_custom">
-    <div class="boardmsg">
-        <div class="search_custom">
-    </div>
-     <div class="row">
+    <div class="header_table_custom">
+        <div class="boardmsg">
+            <div class="row">
                 <div class="col-md-3">
-    <form name="searchForm" action="owners/search" method="post">
-
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                    <label> Search For a User</label>
-
-            <input class="form-control" type="text" name="search" placeholder="Search"/>
-             </div><#--end col-->
-             <div class="col-md-3">
-            <label style="color:white"> Search by:</label>
-            <select class="form-control" name="whatToSearch">
-                <option value="afm">AFM</option>
-                <option value="mail">E-Mail</option>
-            </select>
-             </div><#-- end col-->
-            <div class="col-md-2">
-            <input class="btn btn-md text-success" id="searchButton" type="submit" value="Search">
-
-    </form>
-
- </div><#-- end col-->
-          <div class="col-md-3">
-    <form style="display:none" class="findVehicles" name="idForm" action="owners/findVehicles" method="post">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="hidden" name="id" id="id"/>
-            <input type="submit" value="Search">
-    </form>
-
-    <p><a href="#" id="addUserButton" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary btn-lg" role="button">Add
-        User</a>
+                    <form name="searchForm" action="owners/search" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <label> Search For a User</label>
+                        <input class="form-control" type="text" name="search" placeholder="Search"/>
+                </div><#--end col-->
+                <div class="col-md-3">
+                    <label> Search by:</label>
+                    <select class="form-control" name="whatToSearch">
+                        <option value="afm">AFM</option>
+                        <option value="mail">E-Mail</option>
+                    </select>
+                </div><#-- end col-->
+                <div class="col-md-2">
+                    <input class="btn btn-md text-success" id="searchButton" type="submit" value="Search">
+                </div>
+                </form>
 
 
-        </p>
-         </div><#-- end col button-->
-         </div><#-- end row-->
-        </div><#--custom header -->
-        </div><#--board -->
+                <div class="col-md-3">
+                    <form style="display:none" class="findVehicles" name="idForm" action="owners/findVehicles"
+                          method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="hidden" name="id" id="id"/>
+                        <input type="submit" value="Search">
+                    </form>
+
+                    <p><a href="#" id="addUserButton" data-toggle="modal" data-target="#addUserModal"
+                          class="btn btn-primary btn-lg" role="button">Add User</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
@@ -86,13 +81,13 @@
                                         <#list ownersList as owner>
                                         <tr>
                                             <a href="#">
-                                            <td style="display:none;" class="id goToVehicles">${owner.id}</td>
-                                            <td class="name goToVehicles">${owner.name}</td>
-                                            <td class="surname goToVehicles">${owner.surname}</td>
-                                            <td class="afm goToVehicles">${owner.afm}</td>
-                                            <td class="mail goToVehicles">${owner.mail}</td>
-                                            <td class="address goToVehicles">${owner.address}</td>
-                                            <td class="password goToVehicles">${owner.pass}</td>
+                                                <td style="display:none;" class="id goToVehicles">${owner.id}</td>
+                                                <td class="name goToVehicles">${owner.name}</td>
+                                                <td class="surname goToVehicles">${owner.surname}</td>
+                                                <td class="afm goToVehicles">${owner.afm}</td>
+                                                <td class="mail goToVehicles">${owner.mail}</td>
+                                                <td class="address goToVehicles">${owner.address}</td>
+                                                <td class="password goToVehicles">${owner.pass}</td>
                                             </a>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
@@ -206,44 +201,47 @@
                 <form id="addUserForm" name="addUserForm" action="owners/add"
                       class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
-                        <div class="form-group">
-                            <!--{% csrf_token %}-->
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name"  data-error="Insert a name ..." required>
-                             <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="surname" name="surname"
-                                   placeholder="Last Name" data-error="Insert a surname ..." required>
-                                    <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                             <div class="input-group">
-                             <span class="input-group-addon">@</span>
-                            <input type="email" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail" data-error="Insert a valid email ...." required >
-                            </div> <#--end input group   -->
+                    <div class="form-group">
+                        <!--{% csrf_token %}-->
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name"
+                               data-error="Insert a name ..." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="surname" name="surname"
+                               placeholder="Last Name" data-error="Insert a surname ..." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="email" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail"
+                                   data-error="Insert a valid email ...." required>
+                        </div> <#--end input group   -->
 
-                             <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control input-lg" id="pass" name="pass"
-                                   placeholder="Password"  data-error="Insert a Password ..." required  >
-                                   <div class="help-block with-errors"></div>
-                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" id="pass" name="pass"
+                               placeholder="Password" data-error="Insert a Password ..." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
 
-                        <div class="form-group">
-                            <input type="text" pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm" data-error="Insert a valid afm .... " placeholder="AFM" required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="address" name="address"
-                                   placeholder="Address"  data-error="Insert an address ... " required >
-                                   <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <input type="text" pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm"
+                               data-error="Insert a valid afm .... " placeholder="AFM" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="address" name="address"
+                               placeholder="Address" data-error="Insert an address ... " required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -283,53 +281,57 @@
 <!-- /.modal-delete-->
 
 <#-- Edit User Modal -->
-    <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h2 class="text-center">Edit User</h2>
+<div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center">Edit User</h2>
+            </div>
+            <div class="modal-body row">
+                <div class="text-center">
+                    <h4 class="text-danger">${errorMsg!""}</h4>
                 </div>
-                <div class="modal-body row">
-                    <div class="text-center">
-                        <h4 class="text-danger">${errorMsg!""}</h4>
+                <form id="editUserForm" name="editUserForm" action="owners/edit" data-toggle="validator"
+                      class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
+
+                    <div class="form-group">
+                        <!--{% csrf_token %}-->
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="hidden" id="id" name="id"/>
+                        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name"
+                               data-error="Insert a name ..." required>
+                        <div class="help-block with-errors"></div>
                     </div>
-                    <form id="editUserForm" name="editUserForm" action="owners/edit" data-toggle="validator"
-                          class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
-
-                        <div class="form-group">
-                            <!--{% csrf_token %}-->
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <input type="hidden" id="id" name="id"/>
-                            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Name" data-error="Insert a name ..." required>
-                             <div class="help-block with-errors"></div>
-                        </div>
 
 
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="surname" name="surname" data-error="Insert a Surname ..."
-                                   placeholder="Last Name" required>
-                                    <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail" data-error="Insert a valid email ...." required>
-                         <div class="help-block with-errors"></div>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="surname" name="surname"
+                               data-error="Insert a Surname ..."
+                               placeholder="Last Name" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="mail" name="mail" placeholder="E-Mail"
+                               data-error="Insert a valid email ...." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
 
-                        <div class="form-group">
-                            <input type="text"  pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm" placeholder="AFM" data-error="Insert a valid AFM ...." required>
-                             <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" id="address" name="address"
-                                   placeholder="Address" data-error="Insert an address ..." required>
-                                    <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <input type="text" pattern="^[0-9]{9}$" class="form-control input-lg" id="afm" name="afm"
+                               placeholder="AFM" data-error="Insert a valid AFM ...." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="address" name="address"
+                               placeholder="Address" data-error="Insert an address ..." required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
+                    </div>
+                </form>
 
             </div>
         </div>

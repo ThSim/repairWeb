@@ -4,16 +4,22 @@
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
 
-<div class="plaisio">
+</br>
+<div class="plaisio container-fluid">
+    <div class="header_table_custom">
+        <div class="boardmsg">
+            <div class="row">
+                <div class="col-md-4">
+                <h4>Welcome back, ${fullName}!</h4>
+                </div>
+
+            </div>
+            <h4> The next Ten repairs: </h4>
+        </div>
+    </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-    <div class="boardmsg">
-    <h2>Welcome back, ${fullName}</h2>
-    <h3>This is the Admin's page, Be carefull!</h3>
-    <h3>    The next Ten repairs: </h3>
-    </div>
 
     <div class="content-wrapper">
         <div class="container-fluid">
@@ -42,7 +48,9 @@
                                 <tbody>
                                     <#list repairList as repair>
                                     <tr>
-                                       <a href="#" style="display:block"> <td style="display:none;" class="id">${repair.id}</td></a>
+                                        <a href="#" style="display:block">
+                                            <td style="display:none;" class="id">${repair.id}</td>
+                                        </a>
                                         <td class="datetime">${repair.dateTime}</td>
                                         <td class="status">${repair.status}</td>
                                         <td class="price">${repair.price}</td>
@@ -50,7 +58,7 @@
                                         <td class="surname">${repair.vehicle.user.surname}</td>
                                         <td>
                                             <p data-placement="top" data-toggle="modal" title="Edit">
-                                                <button id="edit" class="editb btn btn-primary btn-xs"
+                                                <button id="edit" class="editb btn btn-success btn-xs"
                                                         data-title="Edit"
                                                         data-toggle="modal"
                                                         data-target="#editRepairModal"><span
@@ -85,12 +93,7 @@
                                 </tbody>
 
                             </table>
-                            <form id="loadMoreForm" action="/load" style="display:none">
-                            <input id="tok" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <input id="repairDateTime"  name="dateTime" value=""/>
 
-                             </form>
-                              <button class="btn btn-primary" id="load">load more...</button>
                         </div>
                     <#else>
                         <h2> No Repairs have found for the next days</h2>
@@ -111,7 +114,7 @@
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/load_more.js'/>"></script>
-<script >
+<script>
 </script>
 
 
