@@ -28,7 +28,7 @@ public class DataBasePopulator{
     @Autowired
     public void DataLoader(UserRepository userRepository) {
         this.userRepository = userRepository;
-        produceUsers(69);
+        produceUsers(5);
     }
 
     public void produceUsers(int numberOfUsers) {

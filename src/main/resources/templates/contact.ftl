@@ -10,20 +10,20 @@
     <section class="container-fluid" id="section17">
 
         <h2 class="text-center lato animate slideInDown">ReGenaration Coding School 2017 Team 3</h2>
-        <h3 class="text-center lato animate slideInDown">We are awesome</h3>
+        <h3 class="text-center lato animate slideInDown">Feel free to contact us at : </h3>
         <h4 class="text-center lato animate slideInDown">
 
             <br>
-            Yiorgos Drakopoulos, Protomastoras
+             gdraco94@yahoo.com : Yiorgos Drakopoulos
             </br>
             <br>
-            Dimitris Vergos, Mhxanikos A'
+             divergos21@gmail.com : Dimitris Vergos
             </br>
             <br>
-            Maria Koutsokerh, Bafes-Episkeves
+             m.koutsokeri@gmail.com :  Maria Koutsokeri
             </br>
             <br>
-            Theodora Simou, Mpouzia-Amortisseur
+            thesimd91@gmail.com :  Theodora Simou
             </br>
 
 

@@ -17,7 +17,7 @@ public class StaticsController {
 
 
     @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public String homeOnwersView(Model model) {
+    public String aboutView(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -29,6 +29,21 @@ public class StaticsController {
 
 
         return "/about";
+    }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String contactView(Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
+            model.addAttribute(PROFILE_DES, "/admin");
+        } else {
+            model.addAttribute(PROFILE_DES, "/user");
+        }
+
+
+        return "/contact";
     }
 
 }
