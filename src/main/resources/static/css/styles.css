@@ -30,6 +30,8 @@ a:hover{
 
 .boardmsg{
   color: #cdcdcd;
+  margin-left:15px;
+  padding-top:15px;
 }
 
 .editb, .delb, .plub {
@@ -235,9 +237,10 @@ select{
 }
 
 .plaisio{
-  background:rgba(34, 15, 15, .7);
-  margin:6% 3% 1% 23%;
+  background:rgb(43, 43, 43,.7);
+  margin:2.2% 0% 1% 16%;
   border:4px solid rgba(0,0,0,0.1);
+  padding-top:20px;
 }
 
 #page-wrapper{

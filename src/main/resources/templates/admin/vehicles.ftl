@@ -185,16 +185,19 @@
                         <!--{% csrf_token %}-->
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" id="id" name="id"/>
-                        <input type="text" class="form-control input-lg" id="plate" name="plate"
-                               placeholder="Plate">
+                        <input type="text" pattern="^[A-Z]{3}[-][0-9]{3}$" class="form-control input-lg" id="plate" name="plate"
+                               placeholder="Plate" data-error="Insert a valid plate" required>
+                                <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" id="brand" name="brand"
-                               placeholder="Brand">
+                               placeholder="Brand" data-error="Insert a brand" required>
+                                 <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" id="color" name="color"
-                               placeholder="Color">
+                               placeholder="Color" data-error="Insert a color" required>
+                                  <div class="help-block with-errors"></div>
                     </div>
 
                     <div class="form-group">

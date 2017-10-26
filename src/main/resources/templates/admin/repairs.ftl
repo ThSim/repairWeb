@@ -6,20 +6,29 @@
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
 
-<div class="plaisio">
+<div class="plaisio container-fluid">
+ <div class="header_table_custom">
     <div class="boardmsg">
         <h3> Search For a Vehicle</h3>
     </div>
     <form name="searchRepairsForm" action="repairs/search" method="post">
-        <div class="hello">
+            <div class="row">
+            <div class="col-md-3">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="text" id="dateStart" name="dateStart" placeholder="Date Start"/>
-            <input type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
+            <input class="form-control" type="text" id="dateStart" name="dateStart" placeholder="Date Start"/>
+                 </div><#--end col -->
+            <div class="col-md-3">
+            <input class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
+                 </div><#--end col -->
+            <div class="col-md-3">
             <input type="submit" value="Search">
-        </div>
+
+            </div><#--end col -->
+            </div><#--end row -->
+
     </form>
 
-
+</div><#-- end header_table_custom  -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
@@ -122,15 +131,16 @@
 <script src="<@spring.url '/js/date/moment.min.js'/>"></script>
 <script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
 <script type="text/javascript">
-    $(function () {
-        $('#dateStart').datetimepicker();
-    });
+$(document).ready(function() {
+               $('#dateStart').datetimepicker();
+               })
 </script>
 
 <script type="text/javascript">
-    $(function () {
-        $('#dateEnd').datetimepicker();
-    });
+$(document).ready(function() {
+               $('#dateEnd').datetimepicker();
+               })
+
 </script>
 
 </@c.page>

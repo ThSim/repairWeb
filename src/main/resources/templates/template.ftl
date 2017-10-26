@@ -16,6 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="<@spring.url '/css/sb-admin.css'/>" rel="stylesheet">
+    <link href="<@spring.url '/css/validation_custom.css'/>" rel="stylesheet">
+
 
     <link rel="stylesheet" href="<@spring.url '/css/styles.css'/>" type='text/css'/>
 
@@ -33,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand text-danger" href="#">Dent Repair</a>
+                <a class="navbar-brand text-danger" href="#"><img src="../imgs/garaze_logo.png" style="width: 85%"></a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapsible">
                 <ul class="nav navbar-nav navbar-left">
