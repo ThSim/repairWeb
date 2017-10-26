@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Controller
 public class AddRepairController {
@@ -30,7 +31,7 @@ public class AddRepairController {
                         RedirectAttributes redirectAttributes) {
 
         String date = repairForm.getDateTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a", Locale.US);
         Vehicle veh = vehicleService.findById(repairForm.getId());
         Repair rep = new Repair(veh,LocalDateTime.parse(date, formatter) ,repairForm.getStatus(),repairForm.getPrice());
 

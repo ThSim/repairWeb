@@ -27,7 +27,7 @@ public class Repair implements Serializable {
     private double price;
 
 
-    @ManyToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.REMOVE)
     @JoinTable( joinColumns =@JoinColumn(name="repair_id", referencedColumnName="id"),
                                 inverseJoinColumns= @JoinColumn(name="part_id", referencedColumnName="partId") )
     private List<Part> parts = new ArrayList<>();
