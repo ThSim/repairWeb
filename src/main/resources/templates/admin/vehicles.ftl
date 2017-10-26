@@ -3,7 +3,7 @@
 <@c.page title="Admin">
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
-</br>
+
 <div class="plaisio container-fluid">
     <div class="header_table_custom">
         <div class="boardmsg">
@@ -16,7 +16,7 @@
                 </div><#--end col-->
                 <div class="col-md-2">
                     <label></label>
-                    <input class="btn btn-md text-success" type="submit" value="Search">
+                    <input class="btn btn-md text-success" id="searchButton" type="submit" value="Search">
                 </div>
                 </form>
             </div><#--end row -->

@@ -77,14 +77,22 @@
     <#nested/>
 <!-- footer section -->
 
+
+
+
+
+
+
+
+
+
+
 <div class="scroll-up">
     <a href="#"><i class="fa fa-angle-up"></i></a>
 </div>
-
 <footer id="footer">
-        <p class="text-center">ReGeneration Coding School ©2017</p>
+    <p class="text-center">ReGeneration Coding School ©2017</p>
 </footer>
-
 </body>
 </html>
 </#macro>

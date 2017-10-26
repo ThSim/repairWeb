@@ -4,7 +4,7 @@
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
 
-</br>
+
 <div class="plaisio container-fluid">
     <div class="header_table_custom">
         <div class="boardmsg">

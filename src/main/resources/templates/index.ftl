@@ -8,7 +8,7 @@
 
 <section class="container-fluid" id="section1">
 
-    <br>
+
     <p class="text-center">
         <img src="<@spring.url 'imgs/RepairShopLogo.png'/>" width="60%" height="60%">
     </p>
