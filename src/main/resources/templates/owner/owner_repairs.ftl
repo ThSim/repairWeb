@@ -4,17 +4,11 @@
 <!-- custom page content -->
     <#include "/owner/owner_sidebar.ftl">
 
-
+</br>
 <div class="plaisio container-fluid">
     <div class="header_table_custom">
         <div class="boardmsg">
-            <div class="row">
-                <div class="col-md-4">
-                    <h4>Welcome back, ${fullName}!</h4>
-                </div>
-
-            </div>
-            <h4> The next Ten repairs: </h4>
+            <h4> All repairs! </h4>
         </div>
     </div>
 

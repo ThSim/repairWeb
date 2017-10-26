@@ -5,12 +5,14 @@ import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Domain.Vehicle;
 import com.codingschool.repairWeb.Exceptions.InvalidCredentialsException;
 import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
+import com.codingschool.repairWeb.Repository.RepairRepository;
 import com.codingschool.repairWeb.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RepairRepository repairRepository;
 
     @Override
     public void save(User user) {
@@ -63,7 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Repair> fetchRepairs() {
+    public List<Repair> fetchRepairs() throws NoResultsFoundException {
         List<Repair> repairs = new LinkedList<>();
         String mail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         User user = findByMail(mail);
@@ -73,7 +78,23 @@ public class UserServiceImpl implements UserService {
         for (Vehicle vehicle : vehicles) {
             repairs.addAll(vehicle.getRepairs());
         }
+        if(repairs.isEmpty()) throw new NoResultsFoundException("Ooops! It seems you haven't any repairs!");
         return repairs;
+    }
+
+    @Override
+    public List<Repair> findOwnersPendingRepairs() throws NoResultsFoundException {
+        List<Repair> repairs = new LinkedList<>();
+        String mail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        User user = findByMail(mail);
+        List<Vehicle> vehicles = user.getVehicles();
+        LocalDateTime localDateTime = LocalDateTime.now();
+        //add repairs for each vehicle to list //maybe by status
+        for (Vehicle vehicle : vehicles) {
+            repairs.addAll(repairRepository.findByDateTimeAfterAndVehicleOrderByDateTimeAsc(localDateTime.minusDays(10),vehicle));
+        }
+        if(repairs.isEmpty()) throw new NoResultsFoundException("It seems you haven't any pending repairs!");
+        else return repairs;
     }
 
     @Override

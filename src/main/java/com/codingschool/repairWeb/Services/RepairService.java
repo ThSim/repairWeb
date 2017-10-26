@@ -24,4 +24,5 @@ public interface RepairService {
     Repair findById (Long id);
 
     List<Repair> findVehiclesRepairs(Long id) throws NoResultsFoundException;
+
 }

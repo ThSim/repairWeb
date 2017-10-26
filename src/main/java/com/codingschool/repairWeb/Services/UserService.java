@@ -22,10 +22,12 @@ public interface UserService {
 
     User findById(Long id);
 
-    List<Repair> fetchRepairs();
+    List<Repair> fetchRepairs() throws NoResultsFoundException;
 
     List<User> find50UsersWithSurnameAfter(String surname);
 
     User searchOwner(String whatToSearch, String search) throws NoResultsFoundException;
+
+    List<Repair> findOwnersPendingRepairs() throws NoResultsFoundException;
 
 }
