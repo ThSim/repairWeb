@@ -44,49 +44,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .permitAll();
-
-       /* http
-                .authorizeRequests()
-                .antMatchers("/", "/about").permitAll()
-                .antMatchers("/admin", "/user").hasAnyRole("ADMIN","USER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();*/
-
-//        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/"))
-//                .and().formLogin().defaultSuccessUrl("/add")
-//                .loginPage("/");
-
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/", "/contact", "/about").permitAll()
-//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-//                .antMatchers("/user/**").access("hasRole('USER')")
-//                .antMatchers("/add").authenticated()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/")
-//                .defaultSuccessUrl("/add")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll();
-//                .and()
-//                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
-
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         //auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(loginAuthenticationProvider);
     }
-
-    //SSL configuration (Redirect http to https)
 }

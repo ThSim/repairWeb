@@ -46,7 +46,7 @@
                                             <a href="#" style="display:block">
                                                 <td style="display:none;" class="id">${repair.id}</td>
                                             </a>
-                                            <td class="datetime">${repair.dateTime}</td>
+                                            <td class="datetime">${repair.dateTime?datetime.iso?string("MM/dd/yyyy h:mm a")}</td>
                                             <td class="status">${repair.status}</td>
                                             <td class="price">${repair.price}</td>
                                             <td class="plate">${repair.vehicle.plate}</td>
