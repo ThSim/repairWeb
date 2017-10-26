@@ -25,6 +25,11 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
+    public void delete(Long id) {
+        repairRepository.deleteById(id);
+    }
+
+    @Override
     public List<Repair> findAdminRepairs() {
         LocalDateTime localDateTime = LocalDateTime.now();
         return repairRepository.findTop10ByDateTimeAfterOrderByDateTimeAsc(localDateTime);
@@ -51,5 +56,9 @@ public class RepairServiceImpl implements RepairService{
         return result;
     }
 
+    @Override
+    public Repair findById(Long id) {
+            return repairRepository.findById(id);
+        }
 
 }

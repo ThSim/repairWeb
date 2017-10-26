@@ -17,9 +17,7 @@ public class DeleteOwnerController {
     @RequestMapping(value = "/admin/owners/delete", method = RequestMethod.POST)
     public String delete(@ModelAttribute(ADD_FORM) OwnerForm ownerForm, RedirectAttributes redirectAttributes) {
 
-
         //here we will delete the owner base on his id
-
         userService.delete(ownerForm.getId());
         return "redirect:/admin/owners";
     }

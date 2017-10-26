@@ -21,6 +21,11 @@ public class VehicleServiceImpl implements VehicleService{
         vehicleRepository.save(veh);
     }
 
+    @Override
+    public void delete(Long id) {
+       vehicleRepository.deleteById(id);
+    }
+
 
     @Override
     public Vehicle findByPlate(String plate){

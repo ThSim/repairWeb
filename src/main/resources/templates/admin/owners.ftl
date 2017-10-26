@@ -323,7 +323,7 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editown.js'/>"></script>
 <script src="<@spring.url '/js/addveh.js'/>"></script>
-<script src="<@spring.url '/js/delete.js'/>"></script>
+<script src="<@spring.url '/js/deleteOwner.js'/>"></script>
 <script src="<@spring.url '/js/goToVehicles.js'/>"></script>
 <script src="<@spring.url '/js/validator.js'/>"></script>
 <script src="<@spring.url '/js/validation_custom.js'/>"></script>

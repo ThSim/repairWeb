@@ -2,13 +2,25 @@ package com.codingschool.repairWeb.Model;
 
 public class PartForm {
 
+    //To id tou repair??
+    private Long id ;
+
     private String partId ;
 
     private String type ;
 
-    private String cost ;
+    private Double cost ;
 
-    public String getPartid() {
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPartId() {
         return partId;
     }
 
@@ -24,11 +36,11 @@ public class PartForm {
         this.type = type;
     }
 
-    public String getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 }
