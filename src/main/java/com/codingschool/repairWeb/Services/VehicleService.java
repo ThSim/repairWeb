@@ -9,6 +9,8 @@ public interface VehicleService {
 
     void save(Vehicle veh);
 
+    void delete(Long id);
+
     Vehicle findByPlate(String plate);
 
     List<Vehicle> find50VehiclesWithPlateAfter(String plate);

@@ -22,15 +22,19 @@ public class Part implements Serializable {
     private List repairs;
 
 
-    Part(){
+    public Part(){
     }
 
-    public Part(String type, double cost) {
+    public Part(String type, Double cost) {
         this.type = type ;
         this.cost = cost ;
     }
 
-
+   /* public Part(Repair repair,String type, Double cost) {
+        this.repair = repair ;
+        this.type = type ;
+        this.cost = cost ;
+    }*/
 
     public long getPartId() {
         return partId;
@@ -48,9 +52,9 @@ public class Part implements Serializable {
         this.type = type;
     }
 
-    public double getCost() { return cost; }
+    public Double getCost() { return cost; }
 
-    public void setCost(double cost) { this.cost = cost; }
+    public void setCost(Double cost) { this.cost = cost; }
 
     public List getRepairList() {
         return repairs;

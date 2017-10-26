@@ -1,3 +1,4 @@
+
 package com.codingschool.repairWeb.Controllers.AdminControllers;
 
 import com.codingschool.repairWeb.Domain.Part;
@@ -37,8 +38,10 @@ public class PartController {
         model.addAttribute(PART_FORM, new PartForm());
 
 
-       /* List<Part> parts = new ArrayList<>();
+
+/* List<Part> parts = new ArrayList<>();
         parts = partService.showAll();*/
+
 
         Vehicle vehicle = vehicleService.findByPlate("MKO-1234");
 
@@ -62,3 +65,4 @@ public class PartController {
     return "parts";
     }
 }
+

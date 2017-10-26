@@ -1,6 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<html>
-<body>
 <#import "/template.ftl" as c/>
 <@c.page title="Admin">
 <!-- custom page content -->
@@ -84,7 +82,7 @@
                                                     <button id="edit" class="delb btn btn-danger btn-xs"
                                                             data-title="Delete"
                                                             data-toggle="modal"
-                                                            data-target="#delete"><span
+                                                            data-target="#deleteModal"><span
                                                             class="glyphicon glyphicon-trash"></span>
                                                     </button>
                                                 </p>
@@ -125,7 +123,7 @@
                 <div class="text-center">
                     <h4 class="text-danger">${errorMsg!""}</h4>
                 </div>
-                <form id="addRepairForm" name="editVehicleForm" action="/admin/repairs/add"
+                <form id="addRepairForm" name="addRepairForm" action="/admin/repairs/add"
                       class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                     <div class="form-group">
@@ -135,7 +133,7 @@
                         <input type="hidden" id="id" name="id"/>
 
                         <input type="text" class="form-control input-lg" id="dateTime" name="dateTime"
-                               placeholder="Datetime">
+                               placeholder="Datetime"/>
 
 
                     </div>
@@ -210,6 +208,47 @@
     </div>
 </div>
 
+
+
+<!--Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                        class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Deletion</h4>
+            </div>
+            <div class="modal-body">
+
+                <p>You are about to delete.</p>
+                <p>Do you want to proceed?</p>
+            </div>
+            <div class="modal-footer ">
+                <form class="edit_delete_form" action="" method="post" style="display:none">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input class="iduser" name="id" value=""></input>
+
+                </form>
+                <a href="#" id="btnYes" class="btn danger">Yes</a>
+                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal-delete-->
+
+
+
+
+
+
+
+
+
+
 <!--scripts loaded here-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -217,11 +256,15 @@
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editveh.js'/>"></script>
+
+<script src="<@spring.url '/js/deleteVehicle.js'/>"></script>
+
 <script src="<@spring.url '/js/addrep.js'/>"></script>
 
 <link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
 <script src="<@spring.url '/js/date/moment.min.js'/>"></script>
 <script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
+
 <script type="text/javascript">
     $(function () {
         $('#dateTime').datetimepicker();

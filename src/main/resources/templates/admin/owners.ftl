@@ -1,6 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<html>
-<body>
 <#import "/template.ftl" as c/>
 <@c.page title="Admin">
 <!-- custom page content -->
@@ -338,7 +336,6 @@
     </div>
 </div>
 </div>
-
 <!--scripts loaded here-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -347,7 +344,7 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/editown.js'/>"></script>
 <script src="<@spring.url '/js/addveh.js'/>"></script>
-<script src="<@spring.url '/js/delete.js'/>"></script>
+<script src="<@spring.url '/js/deleteOwner.js'/>"></script>
 <script src="<@spring.url '/js/goToVehicles.js'/>"></script>
 <script src="<@spring.url '/js/validator.js'/>"></script>
 <script src="<@spring.url '/js/validation_custom.js'/>"></script>
