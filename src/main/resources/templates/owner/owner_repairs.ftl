@@ -8,7 +8,7 @@
 <div class="plaisio container-fluid">
     <div class="header_table_custom">
         <div class="boardmsg">
-            <h4> All repairs! </h4>
+                <h4> All repairs </h4>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
     <#if errorMessage?has_content>
-        <div class="boardmsg">
+        <div class="boardmsg" id="boardmsg">
             <h2> ${errorMessage}</h2>
         </div>
     <#else>
@@ -59,7 +59,9 @@
 
                             </div>
                         <#else>
-                            <h2> No Repairs have found for the next days</h2>
+                            <div class="col-md-12" id="boardmsg">
+                                <h2> No Repairs have found for the next days</h2>
+                            </div>
                         </#if>
 
                     </div>

@@ -33,7 +33,7 @@
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
     <#if errorMessage?has_content>
-        <div class="boardmsg">
+        <div class="boardmsg" id="boardmsg">
             <h2> ${errorMessage}</h2>
         </div>
     <#else>
