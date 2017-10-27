@@ -124,11 +124,11 @@
                     <div class="form-group">
                         <!--{% csrf_token %}-->
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="text" class="form-control input-lg" name="email" placeholder="E-Mail" data-error="Insert a valid email"  >
+                        <input type="email" class="form-control input-lg" name="email" placeholder="E-Mail" data-error="Insert a valid email"  >
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" data-minlength="4"  class="form-control input-lg" name="pass" data-error="Insert a password" placeholder="Password"   >
+                        <input type="password" data-minlength="4"  class="form-control input-lg" name="pass" data-error="Insert a password" placeholder="Password"  required >
                           <div class="help-block with-errors"> </div>
 
 
