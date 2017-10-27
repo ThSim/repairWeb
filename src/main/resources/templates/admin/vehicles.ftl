@@ -4,19 +4,20 @@
 <!-- custom page content -->
     <#include "/admin/admin_sidebar.ftl">
 
-<div class="plaisio">
+<div class="plaisio container-fluid">
+<div class="header_table_custom">
     <div class="boardmsg">
         <h3> Search For a Vehicle</h3>
     </div>
     <form name="searchForm" action="vehicles/search" method="post">
-        <div class="hello">
+        <div class="hello" style="display:ruby-base">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="text" name="plate" placeholder="Plate"/>
-            <input type="submit" value="Search">
+            <input class="form-control" type="text" name="plate" placeholder="Plate" style="width:254px"/>
+            <input class="btn btn-sm" type="submit" value="Search">
         </div>
     </form>
 
-
+       </div><#--custom header -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
@@ -59,7 +60,7 @@
                                             <td>${vehicle.user.surname}</td>
                                             <td>
                                                 <p data-placement="top" data-toggle="modal" title="Edit">
-                                                    <button id="edit" class="editb btn btn-primary btn-xs"
+                                                    <button id="edit" class="editb btn btn-success btn-xs"
                                                             data-title="Edit"
                                                             data-toggle="modal"
                                                             data-target="#editVehicleModal"><span
@@ -152,7 +153,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
                     </div>
                 </form>
 

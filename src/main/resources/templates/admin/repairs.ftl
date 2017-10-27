@@ -12,7 +12,7 @@
         <h3> Search For a Vehicle</h3>
     </div>
     <form name="searchRepairsForm" action="repairs/search" method="post">
-            <div class="row">
+            <div class="row" style="margin-left:10px">
             <div class="col-md-3">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input class="form-control" type="text" id="dateStart" name="dateStart" placeholder="Date Start"/>
@@ -21,7 +21,7 @@
             <input class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
                  </div><#--end col -->
             <div class="col-md-3">
-            <input type="submit" value="Search">
+            <input class="btn btn-md" type="submit" value="Search">
 
             </div><#--end col -->
             </div><#--end row -->
@@ -73,7 +73,7 @@
                                         <td class="surname">${repair.vehicle.user.surname}</td>
                                         <td>
                                             <p data-placement="top" data-toggle="modal" title="Edit">
-                                                <button id="edit" class="editb btn btn-primary btn-xs"
+                                                <button id="edit" class="editb btn btn-success btn-xs"
                                                         data-title="Edit"
                                                         data-toggle="modal"
                                                         data-target="#editRepairModal"><span
@@ -134,7 +134,7 @@
                 <div class="text-center">
                     <h4 class="text-danger">${errorMsg!""}</h4>
                 </div>
-                <form id="editRepairForm" name="editRepairForm" action="/admin/repairs/edit"
+                <form id="editRepairForm" data-toggle="validator" name="editRepairForm" action="/admin/repairs/edit"
                       class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
 
                     <div class="form-group">
@@ -144,26 +144,28 @@
                         <input type="hidden" id="id" name="id"/>
 
                         <input type="text" class="form-control input-lg" id="dateTime" name="dateTime"
-                               placeholder="Datetime"/>
+                               placeholder="Datetime"/ data-error="Insert a Date ..." required>
+                                <div class="help-block with-errors"></div>
 
 
                     </div>
                     <div class="form-group">
-                        <select name="status" id="status" required class="form-control input-lg">
+                        <select name="status" id="status" required class="form-control input-lg" data-error="Select status ..." required>
                             <option value="" disabled selected hidden>Status</option>
                             <option value="pending">Pending</option>
                             <option value="onTheWay">On the way</option>
                             <option value="completed">Completed</option>
                         </select>
-
+                          <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="price" name="price"
-                               placeholder="Price">
+                        <input type="text" pattern="^[0-9]{1,}$" class="form-control input-lg" id="price" name="price"
+                               placeholder="Price" data-error="Insert a price..." required>
+                                <div class="help-block with-errors"></div>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
                     </div>
                 </form>
 
@@ -263,6 +265,8 @@
 <link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
 <script src="<@spring.url '/js/date/moment.min.js'/>"></script>
 <script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
+<script src="<@spring.url '/js/validator.js'/>"></script>
+<script src="<@spring.url '/js/validation_custom.js'/>"></script>
 <script type="text/javascript">
     $(function () {
         $('#dateStart').datetimepicker();

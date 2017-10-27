@@ -1,7 +1,7 @@
-.list-unstyled2 {
+.with-errors  .list-unstyled {
   background: #be4b49 !important;
   padding: 4px !important;
-  border-radius: 5px !important;
+  border-radius: 1px !important;
   position: relative;
   display: inline-block !important;
   box-shadow: 1px 1px 1px #aaaaaa;
@@ -13,7 +13,7 @@
   border:1px dotted black;
 }
 
-.list-unstyled2:before{
+.with-errors .list-unstyled:before{
   content: '';
   width: 0;
   height: 0;

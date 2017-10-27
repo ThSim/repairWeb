@@ -1,7 +1,7 @@
 $(document).ready(function() {
-$("#edit").click(function(){
-$("#editUserForm").validator('validate')
-})
+//$("#edit").click(function(){
+//$("#editUserForm").validator('validate')
+//})
 
 $("#addUserButton").click(function(){
 $('#addUserForm').trigger("reset");

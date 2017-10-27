@@ -50,7 +50,7 @@
                                         <td class="surname">${repair.vehicle.user.surname}</td>
                                         <td>
                                             <p data-placement="top" data-toggle="modal" title="Edit">
-                                                <button id="edit" class="editb btn btn-primary btn-xs"
+                                                <button id="edit" class="editb btn btn-success btn-xs"
                                                         data-title="Edit"
                                                         data-toggle="modal"
                                                         data-target="#editRepairModal"><span
@@ -85,13 +85,7 @@
                                 </tbody>
 
                             </table>
-                            <form id="loadMoreForm" action="/load" style="display:none">
-                            <input id="tok" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <input id="repairDateTime"  name="dateTime" value=""/>
 
-                             </form>
-                              <button class="btn btn-primary" id="load">load more...</button>
-                        </div>
                     <#else>
                         <h2> No Repairs have found for the next days</h2>
                     </#if>
