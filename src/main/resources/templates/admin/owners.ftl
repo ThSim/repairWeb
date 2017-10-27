@@ -13,7 +13,7 @@
                     <form name="searchForm" action="owners/search" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <label> Search For a User</label>
-                        <input class="form-control" type="text" name="search" placeholder="Search"/>
+                        <input required class="form-control" type="text" name="search" placeholder="Search"/>
                 </div><#--end col-->
                 <div class="col-md-3">
                     <label> Search by:</label>

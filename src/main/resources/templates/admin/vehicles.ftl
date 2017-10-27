@@ -12,7 +12,7 @@
                     <form name="searchForm" action="vehicles/search" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <label> Search For a Vehicle</label>
-                        <input class="form-control" type="text" name="plate" placeholder="Plate"/>
+                        <input required class="form-control" type="text" name="plate" placeholder="Plate"/>
                 </div><#--end col-->
                 <div class="col-md-2">
                     <label></label>

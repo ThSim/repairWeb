@@ -58,7 +58,6 @@
                                     <th>Vehicle's Owner</th>
 
                                     <th>Edit</th>
-                                    <th>Add Parts</th>
                                     <th>Delete</th>
 
                                     </thead>
@@ -81,16 +80,7 @@
                                                     </button>
                                                 </p>
                                             </td>
-                                            <td>
-                                                <p data-placement="top" data-toggle="tooltip" title="Add">
-                                                    <button id="addPart" class="plub btn btn-warning btn-xs"
-                                                            data-title="Add"
-                                                            data-toggle="modal"
-                                                            data-target="#addParts"><span
-                                                            class="glyphicon glyphicon-plus"></span>
-                                                    </button>
-                                                </p>
-                                            </td>
+
                                             <td>
                                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
                                                     <button id="delete" class="delb btn btn-danger btn-xs"
@@ -172,45 +162,6 @@
     </div>
 </div>
 
-
-<!-- Add Parts Modal -->
-<div id="addParts" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="text-center">Add Parts</h2>
-            </div>
-            <div class="modal-body row">
-                <div class="text-center">
-                    <h4 class="text-danger">${errorMsg!""}</h4>
-                </div>
-                <form id="addPartForm" name="addPartForm" action="repairs/addParts"
-                      class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
-
-                    <div class="form-group">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="hidden" id="id" name="id"/>
-                        <label for="cb"><input id="cb" type="checkbox" value="takatia" onclick="handleClick(this);">Checkbox</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="cb2"><input id="cb2" type="checkbox" value="check2" onclick="handleClick(this);">Checkbox2</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="cb3"><input id="cb3" type="checkbox" value="check3" onclick="handleClick(this);">Checkbox3</label>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-lg btn-block" id="but">Submit</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
     <#include "/admin/delete_modal.ftl">
 
 
@@ -228,8 +179,6 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/deleteRepair.js'/>"></script>
 <script src="<@spring.url '/js/editRepair.js'/>"></script>
-<script src="<@spring.url '/js/addParts.js'/>"></script>
-
 <link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
 <script src="<@spring.url '/js/date/moment.min.js'/>"></script>
 <script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>

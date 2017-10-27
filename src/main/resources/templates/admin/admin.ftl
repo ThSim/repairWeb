@@ -41,7 +41,6 @@
                                 <th>Vehicle's Owner</th>
 
                                 <th>Edit</th>
-                                <th>Add Vehicle</th>
                                 <th>Delete</th>
 
                                 </thead>
@@ -67,21 +66,11 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Add">
-                                                <button id="edit" class="plub btn btn-warning btn-xs"
-                                                        data-title="Add"
-                                                        data-toggle="modal"
-                                                        data-target="#addParts"><span
-                                                        class="glyphicon glyphicon-plus"></span>
-                                                </button>
-                                            </p>
-                                        </td>
-                                        <td>
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
                                                 <button id="edit" class="delb btn btn-danger btn-xs"
                                                         data-title="Delete"
                                                         data-toggle="modal"
-                                                        data-target="#delete"><span
+                                                        data-target="#deleteModal"><span
                                                         class="glyphicon glyphicon-trash"></span>
                                                 </button>
                                             </p>
@@ -107,16 +96,68 @@
 
 </div>
 
+<#-- Edit Repair Modal -->
+<div id="editRepairModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center">Edit Repair</h2>
+            </div>
+            <div class="modal-body row">
+                <div class="text-center">
+                    <h4 class="text-danger">${errorMsg!""}</h4>
+                </div>
+                <form id="editRepairForm" name="editRepairForm" action="/admin/repairs/edit"
+                      class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" method="post">
+
+                    <div class="form-group">
+                        <!--{% csrf_token %}-->
+
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="hidden" id="id" name="id"/>
+
+                        <input type="text" class="form-control input-lg" id="dateTime" name="dateTime"
+                               placeholder="Datetime"/>
+
+
+                    </div>
+                    <div class="form-group">
+                        <select name="status" id="status" required class="form-control input-lg">
+                            <option value="" disabled selected hidden>Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="onTheWay">On the way</option>
+                            <option value="completed">Completed</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="price" name="price"
+                               placeholder="Price">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <#include "/admin/delete_modal.ftl">
+
+
 <!--scripts loaded here-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script src="<@spring.url '/js/scripts.js'/>"></script>
-<script src="<@spring.url '/js/load_more.js'/>"></script>
-<script>
-</script>
-
+<script src="<@spring.url '/js/deleteRepair.js'/>"></script>
+<script src="<@spring.url '/js/editRepair.js'/>"></script>
 
 </@c.page>
 
