@@ -25,6 +25,7 @@
 
 <section class="container-fluid" id="section3">
     <h1 class="text-center">Need a Fix?</h1>
+    <#if !flag>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <br>
@@ -43,6 +44,7 @@
             </p>
         </div>
     </div>
+    </#if>
 </section>
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
