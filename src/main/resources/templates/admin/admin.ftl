@@ -158,6 +158,16 @@
 <script src="<@spring.url '/js/scripts.js'/>"></script>
 <script src="<@spring.url '/js/deleteRepair.js'/>"></script>
 <script src="<@spring.url '/js/editRepair.js'/>"></script>
+<link href="<@spring.url '/js/date/bootstrap-datepicker.css'/>" rel="stylesheet">
+<script src="<@spring.url '/js/date/moment.min.js'/>"></script>
+<script src="<@spring.url '/js/date/bootstrap-datetimepicker.js'/>"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#dateTime').datetimepicker();
+    });
+</script>
+
 
 </@c.page>
 
