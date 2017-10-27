@@ -7,7 +7,8 @@
     <title>header.html</title>
     <!--<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="assets/css/styles.css">
-	
+
+
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.css" />
 
