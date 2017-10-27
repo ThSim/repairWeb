@@ -14,12 +14,12 @@
                     <form name="searchRepairsForm" action="repairs/search" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <label> Starting date</label>
-                        <input class="form-control" type="text" id="dateStart" name="dateStart"
+                        <input required class="form-control" type="text" id="dateStart" name="dateStart"
                                placeholder="Date Start"/>
                 </div><#--end col -->
                 <div class="col-md-3">
                     <label> Ending date</label>
-                    <input class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
+                    <input required class="form-control" type="text" id="dateEnd" name="dateEnd" placeholder="Date End"/>
                 </div><#--end col -->
                 <div class="col-md-1">
                     <input class="btn btn-md text-success" id="searchButtonRep" type="submit" value="Search">

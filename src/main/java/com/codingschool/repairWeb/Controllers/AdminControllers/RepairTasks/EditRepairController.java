@@ -1,6 +1,7 @@
 package com.codingschool.repairWeb.Controllers.AdminControllers.RepairTasks;
 
 
+import com.codingschool.repairWeb.Converters.DateParser;
 import com.codingschool.repairWeb.Domain.Repair;
 import com.codingschool.repairWeb.Domain.Vehicle;
 import com.codingschool.repairWeb.Model.RepairForm;
@@ -32,26 +33,12 @@ public class EditRepairController {
                                   RedirectAttributes redirectAttributes){
 
             Repair repairEdit = repairService.findById(repairForm.getId());
-
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a", Locale.US);
-
-            repairEdit.setDateTime(LocalDateTime.parse(repairForm.getDateTime(), formatter));
+            repairEdit.setDateTime(DateParser.dateFromPicker(repairForm.getDateTime()));
             repairEdit.setStatus(repairForm.getStatus());
             repairEdit.setPrice(repairForm.getPrice());
-
-
             repairService.save(repairEdit);
-
-
-
             List<Repair> result = new LinkedList<>();
-
-
             result.add(repairService.findById(repairForm.getId()));
-
-
-
             redirectAttributes.addFlashAttribute("resultList",result);
             return "redirect:/admin/repairs" ;
         }
