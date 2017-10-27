@@ -1,12 +1,15 @@
 package com.codingschool.repairWeb.Services;
 
+import com.codingschool.repairWeb.Domain.User;
 import com.codingschool.repairWeb.Domain.Vehicle;
 import com.codingschool.repairWeb.Exceptions.NoResultsFoundException;
 import com.codingschool.repairWeb.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -15,6 +18,10 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Autowired
     private VehicleRepository vehicleRepository;
+
+    @Autowired
+    private UserService userService;
+
 
     @Override
     public void save(Vehicle veh) {
@@ -49,6 +56,16 @@ public class VehicleServiceImpl implements VehicleService{
         Vehicle vehicleRes = vehicleRepository.findByPlate(plate);
         if(vehicleRes == null)  throw new NoResultsFoundException("No vehicle found matching your criteria");
         else return vehicleRes;
+    }
+
+    @Override
+    public List<Vehicle> fetchOwnerVehicles() throws NoResultsFoundException {
+        String mail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        User user = userService.findByMail(mail);
+        List<Vehicle> vehicles = user.getVehicles();
+
+        if(vehicles.isEmpty()) throw new NoResultsFoundException("Ooops! It seems you haven't any Cars!");
+        return vehicles;
     }
 
     @Override

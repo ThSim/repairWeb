@@ -19,5 +19,7 @@ public interface VehicleService {
 
     Vehicle searchVehicle(String plate) throws NoResultsFoundException;
 
+    List<Vehicle> fetchOwnerVehicles() throws NoResultsFoundException;
+
     List<Vehicle> findOwnersVehicles(Long id) throws NoResultsFoundException;
 }

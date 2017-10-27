@@ -7,7 +7,7 @@
 <div class="plaisio container-fluid">
     <div class="header_table_custom">
         <div class="boardmsg">
-                <h4> All repairs </h4>
+            <h4> All repairs </h4>
         </div>
     </div>
 
@@ -25,50 +25,42 @@
                 <div class="card mb-3">
                     <div class="card-header">
 
-                        <#if repairList??>
+                        <#if vehiclesList??>
                         <div class="col-md-12">
                             <div class="table-responsive" style="background: gainsboro">
 
                                 <table id="mytable" class="table table-striped">
                                     <thead style="background-image: linear-gradient(to top,#f1f1f1,#fff);">
-
-                                    <th style="display:none;">Id</th>
-                                    <th>Datetime</th>
-                                    <th>Status</th>
-                                    <th>Price</th>
-                                    <th>Vehicle's Plate</th>
-
+                                    <th style="display: none;">Id</th>
+                                    <th>Plate</th>
+                                    <th>Brand</th>
+                                    <th>Color</th>
                                     </thead>
                                     <tbody>
-                                        <#list repairList as repair>
+                                        <#list vehiclesList as vehicle>
                                         <tr>
-                                            <a href="#" style="display:block">
-                                                <td style="display:none;" class="id">${repair.id}</td>
-                                            </a>
-                                            <td class="datetime">${repair.dateTime?datetime.iso?string("MM/dd/yyyy h:mm a")}</td>
-                                            <td class="status">${repair.status}</td>
-                                            <td class="price">${repair.price}</td>
-                                            <td class="plate">${repair.vehicle.plate}</td>
+                                            <td class="id goToRepairs" style="display: none;">${vehicle.id}</td>
+                                            <td class="plate goToRepairs">${vehicle.plate}</td>
+                                            <td class="brand goToRepairs">${vehicle.brand}</td>
+                                            <td class="color goToRepairs">${vehicle.color}</td>
                                         </tr>
                                         </#list>
-
                                     </tbody>
 
                                 </table>
-
                             </div>
+
                         <#else>
-                            <div class="col-md-12" id="boardmsg">
-                                <h2> No Repairs have found for the next days</h2>
-                            </div>
+                            <h2> No Vehicles have found!</h2>
                         </#if>
-
                     </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </#if>
+
 </div>
 
 <!--scripts loaded here-->
