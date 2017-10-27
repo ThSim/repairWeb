@@ -14,7 +14,7 @@
                 </div>
 
             </div>
-            <h4> The next Ten repairs: </h4>
+            <h4> 10 Upcoming Repairs : </h4>
         </div>
     </div>
 

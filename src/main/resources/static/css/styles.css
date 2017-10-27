@@ -15,6 +15,7 @@ html, body{
 #boardmsg{
   margin-left: 30px;
   margin-right: 29px;
+  padding-left: 15px;
   padding-bottom: 20px;
   background: #2b2b2b;
 }
@@ -63,6 +64,16 @@ a:hover{
   margin-top: -5px;
   height: 34px;
 }
+
+#section88{
+  background-color: rgba(0,0,0,0.7);
+  color: #fff;
+  font-family: 'Bitter', serif;
+  margin: -10px -40px;
+
+}
+
+
 
 .btn-danger{
   background-color:#f44d3c;

@@ -12,7 +12,7 @@
                 <div class="col-md-3">
                     <form name="searchForm" action="owners/search" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <label> Search For a User</label>
+                        <label> Search for an owner </label>
                         <input required class="form-control" type="text" name="search" placeholder="Search"/>
                 </div><#--end col-->
                 <div class="col-md-3">
@@ -37,7 +37,7 @@
                     </form>
 
                     <p><a href="#" id="addUserButton" data-toggle="modal" data-target="#addUserModal"
-                          class="btn btn-primary btn-lg" role="button">Add User</a>
+                          class="btn btn-primary btn-lg" role="button">Add Owner</a>
                     </p>
                 </div>
             </div>

@@ -7,7 +7,7 @@
 
 <div class="plaisio container-fluid" id="plaisioAbout">
 
-    <section class="container-fluid" id="section17">
+    <section class="container-fluid" id="section88">
 
         <h2 class="text-center lato animate slideInDown">ReGenaration Coding School 2017 Team 3</h2>
         <h3 class="text-center lato animate slideInDown">Feel free to contact us at : </h3>

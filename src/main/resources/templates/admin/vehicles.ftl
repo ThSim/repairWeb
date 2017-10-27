@@ -55,8 +55,8 @@
                                     <th>Plate</th>
                                     <th>Brand</th>
                                     <th>Color</th>
-                                    <th>Owner' AFM</th>
-                                    <th>Owner' Last Name</th>
+                                    <th>Owner's AFM</th>
+                                    <th>Owner's Last Name</th>
 
                                     <th>Edit</th>
                                     <th>Add Repair</th>
